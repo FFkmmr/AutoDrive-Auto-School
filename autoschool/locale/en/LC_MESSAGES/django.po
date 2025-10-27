@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-27 16:31+0300\n"
+"POT-Creation-Date: 2025-10-27 20:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: templates/main/components/home.html:4
-msgid "Home"
+
+#: .\autoschool\templates\main\components\home.html:4
+msgid "Main"
 msgstr ""
 
-#: templates/main/components/home.html:7
-msgid "Welcome to our site!"
+#: .\autoschool\templates\main\components\home.html:7
+msgid "Hi!"
 msgstr ""
 
-#: templates/main/components/home.html:8
+#: .\autoschool\templates\main\components\home.html:8
 #, python-format
-msgid "Hello, %(user.username|default:\"guest\")s!"
+msgid "hi, %(user.username|default:\"гость\")s!"
 msgstr ""

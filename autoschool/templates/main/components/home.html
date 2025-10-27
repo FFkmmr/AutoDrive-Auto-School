@@ -1,9 +1,13 @@
-{% extends "base.html" %}
+{% extends "main/index.html" %}
 {% load i18n %}
 
-{% block title %}{% trans "Home" %}{% endblock %}
+{% block title %}{% trans "Главная страница" %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Welcome to our site!" %}</h1>
-<p>{% blocktrans %}Hello, {{ user.username|default:"guest" }}!{% endblocktrans %}</p>
+<h1>{% trans "Добро пожаловать!" %}</h1>
+
+{% blocktrans with username=user.username|default:"гость" %}
+Привет, {{ username }}!
+{% endblocktrans %}
+
 {% endblock %}

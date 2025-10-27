@@ -16,18 +16,19 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: .\autoschool\templates\main\components\home.html:4
 msgid "Главная страница"
-msgstr "WFDDDDDDDDD"
+msgstr ""
 
 #: .\autoschool\templates\main\components\home.html:7
 msgid "Добро пожаловать!"
-msgstr "WWWWWWWWWWWWWW"
+msgstr ""
 
 #: .\autoschool\templates\main\components\home.html:8
 #, python-format
 msgid "Привет, %(user.username|default:\"гость\")s!"
-msgstr "CCCCCCCCCCCCCCCCCCCC"
+msgstr ""

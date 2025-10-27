@@ -108,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # --- Языковые настройки ---
 USE_I18N = True
 USE_L10N = True
-LANGUAGE_CODE = 'ru'  # язык по умолчанию
+LANGUAGE_CODE = 'en'  # язык по умолчанию
 
 LANGUAGES = [
     ('ru', 'Русский'),
@@ -116,7 +116,7 @@ LANGUAGES = [
     ('en', 'English'),
 ]
 
-LOCALE_PATHS = [BASE_DIR / 'locale']
+LOCALE_PATHS = [str(BASE_DIR / 'locale')]
 
 TIME_ZONE = 'UTC'
 
@@ -126,7 +126,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
