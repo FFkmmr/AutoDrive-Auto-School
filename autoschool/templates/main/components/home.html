@@ -1,13 +1,39 @@
 {% extends "main/index.html" %}
+{% load static %}
 {% load i18n %}
 
 {% block title %}{% trans "Главная страница" %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Добро пожаловать!" %}</h1>
 
-{% blocktrans with username=user.username|default:"гость" %}
-Привет, {{ username }}!
-{% endblocktrans %}
+    <div class="image-block-1" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/static/main/img/home-backgr-1.png');">
+        <div class="text-block">
+            <h1>Академия вождения</h1>
+            <p>Станьте профеcсиональным водителем <br> вместе с <span class="AutoDrive">AutoDrive</span>!</p>    
+        </div>
+        <div class="button-block">
+            <a href="{% url 'booking' %}?active_page=booking">Индивидуальные уроки</a>
+            <a href="{% url 'booking' %}?active_page=booking">Курсы по вождению</a>
+        </div>
+    </div>
 
+    <div class="infinite-line-block">
+
+    </div>
+
+    <div class="why-we-block">
+
+    </div>
+
+    <div class="image-block-2">
+
+    </div>
+
+    <div class="students-say">
+
+    </div>
+
+    <div class="comments-block">
+
+    </div>
 {% endblock %}

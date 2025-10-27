@@ -13,32 +13,41 @@
 </head>
 <body>
     <nav>
-        <img src="{% static 'main/img/logo.png' %}" alt="logo">
+        <div class="logo-block">
+            <img src="{% static 'main/img/logo.png' %}" alt="logo">
+        </div>
+        <div class="nav-block">
+            <div class="navigation">
+                <a href="{% url 'home' %}?active_page=home" class="{% if active_page == 'home' or not active_page %}is-active{% endif %}">Главная</a>
+                <a href="{% url 'about' %}?active_page=about" class="{% if active_page == 'about' %}is-active{% endif %}">О нас</a>
+                <a href="{% url 'booking' %}?active_page=booking" class="{% if active_page == 'booking' %}is-active{% endif %}">Запись онлайн</a>
+                <a href="{% url 'contact' %}?active_page=contact" class="{% if active_page == 'contact' %}is-active{% endif %}">Контакты</a>
+            </div>
+            <div class="language-changer">
+                <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input name="next" type="hidden" value="{{ request.get_full_path }}">
+                <select name="language" onchange="this.form.submit()">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% for code, name in LANGUAGES %}
+                        <option value="{{ code }}" {% if code == LANGUAGE_CODE %}selected{% endif %}>{{ name }}</option>
+                    {% endfor %}
+                </select>
+            </form>
+                <p>Войти</p>
+            </div>
+        </div>
 
-        <div class="navigation">
-            <a href="">Главная</a>
-            <a href="about">О нас</a>
-            <a href="booking">Запись онлайн</a>
-            <a href="contact">Контакты</a>
-        </div>
-        <div class="language-changer">
-            <form action="{% url 'set_language' %}" method="post">
-            {% csrf_token %}
-            <input name="next" type="hidden" value="{{ request.get_full_path }}">
-            <select name="language" onchange="this.form.submit()">
-                {% get_current_language as LANGUAGE_CODE %}
-                {% get_available_languages as LANGUAGES %}
-                {% for code, name in LANGUAGES %}
-                    <option value="{{ code }}" {% if code == LANGUAGE_CODE %}selected{% endif %}>{{ name }}</option>
-                {% endfor %}
-            </select>
-        </form>
-            <p>Войти</p>
-        </div>
 
     </nav>
 
+    <div class="navigation-compensator"></div>
+
     {% block content %}{% endblock %}
 
+    <div class="footer">
+
+    </div>
 </body>
 </html>
