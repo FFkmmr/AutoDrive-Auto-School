@@ -2,7 +2,6 @@
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 
-<!doctype html>
 <html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="UTF-8">
@@ -38,8 +37,6 @@
                 <p>Войти</p>
             </div>
         </div>
-
-
     </nav>
 
     <div class="navigation-compensator"></div>
@@ -50,4 +47,5 @@
 
     </div>
 </body>
+<script src="{% static 'main/js/script.js' %}"></script>
 </html>
