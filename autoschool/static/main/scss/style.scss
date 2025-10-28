@@ -1,26 +1,10 @@
 @charset "UTF-8";
 
-
-/* ===========================
-   VARIABLES
-   =========================== */
-$color-orange: #FF9924;
-$color-gray: #949494;
-$color-yellow: #FFD261;
-
-$font-jura: 'Jura', sans-serif;
-
-@mixin center() {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 /* ===========================
    BASE SCSS RESET
    =========================== */
 @import url("https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 * {
   *,
   *::before,
@@ -63,7 +47,6 @@ $font-jura: 'Jura', sans-serif;
 
   body {
     line-height: 1;
-    font-family: $font-jura;
   }
 
   blockquote,
@@ -89,6 +72,9 @@ $font-jura: 'Jura', sans-serif;
     display: flex;
     justify-content: center;
   }
+  html {
+    height: 100%;
+  }
   main {
     width: 100%;
     height: 100%;
@@ -100,15 +86,44 @@ $font-jura: 'Jura', sans-serif;
    VARIABLES
    =========================== */
 $color-orange: #FF9924;
+$color-txt-orange: #FFBB00;
 $color-gray: #949494;
 $color-yellow: #FFD261;
+$color-beige: #FFDAAF;
 
 $font-jura: 'Jura', sans-serif;
+$font-inter: 'Inter', sans-serif;
 
+
+@mixin center() {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@mixin lg-button() {
+  display: flex;
+  width: 300px;
+  height: 54px;
+  border-radius: 27px;
+  justify-content: center;
+  align-items: center;
+  font-family: $font-jura;
+  font-size: 22px;
+  font-weight: 600;
+  background-color: $color-yellow;
+}
+@keyframes spin {
+  from  {translate:0;}
+  to {translate: -100%;}
+}
+
+  //background-image: url("../img/why-we-back.svg");
 /* ===========================
    NAVIGATION
    =========================== */
 nav {
+  font-family: $font-inter;
   position: fixed;
   display: flex;
   z-index: 100;
@@ -187,6 +202,10 @@ nav {
 /* ===========================
    BODY
    =========================== */
+body {
+  font-family: $font-inter;
+}
+
 .image-block-1 {
   display: flex;
   width: 100%;
@@ -242,11 +261,16 @@ nav {
 }
 
 .why-we-block {
-  @include center;
   position: relative;
-  height: 807px;
-  width: 100%;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-image: url("../img/why-we-back.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 577px;
+  width: 100%;
 
   .infinite-line-block {
     width: 90%;
@@ -259,8 +283,8 @@ nav {
 
     .carousel {
       display: flex;
-      overflow-x: auto;
       scrollbar-width: none;
+      overflow-x: auto;
 
       &::-webkit-scrollbar {
         width: 0;
@@ -272,20 +296,142 @@ nav {
         align-items: center;
         justify-content: center;
         animation: spin 15s infinite linear;
+        height: 390px;
 
         .card {
           margin-right: 10px;
-          flex: 0 0 5em;
-          height: 6em;
+          height: 290px;
+          width: 335px;
           font-size: 3rem;
+
+          position: relative;
+          overflow: visible;
+
+          .card-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+          }
+
+          .card-btn {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+          }
+
+          p {
+            position: relative;
+            color: white;
+            top: 175px;
+            max-width: 95%;
+            margin-right: auto;
+            margin-left: auto;
+            text-align: center;
+            font-size: 22px;
+            font-weight: 700;
+            z-index: 4;
+          }
         }
       }
     }
   }
+
+  h1 {
+    display: flex;
+    align-items: end;
+    height: 84%;
+    color: $color-beige;
+    font-size: 200px;
+    font-weight: 900;
+    overflow: hidden;
+  }
 }
 
+.image-block-2 {
+  position: relative;
+  height: 770px;
+  width: 100%;
+  background-image: url("../img/main-about-block-background.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
 
-@keyframes spin {
-  from  {translate:0;}
-  to {translate: -100%;}
+  .cards-block {
+    position: absolute;
+    top: -82px;
+    width: 100%;
+    padding: 0 18%;
+    display: flex;
+    justify-content: space-around;
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      .card-icon {
+        width: 165px;
+        height: 165px;
+      }
+
+      .card-text {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 22px;
+        color: white;
+
+        h3 {
+          font-size: 24px;
+          font-weight: 900;
+        }
+
+        h1 {
+          font-size: 40px;
+          font-weight: 600;
+          color: $color-txt-orange;
+        }
+      }
+    }
+  }
+  p {
+    position: relative;
+    top:  240px;
+    width: 100%;
+    padding-left: 150px;
+    padding-right: 150px;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    font-weight: 600;
+    font-family: $font-jura;
+  }
+  .lg-buttons {
+    @include center();
+    flex-direction: row;
+    position: relative;
+    gap: 20px;
+    top: 380px;
+
+    .lg-button {
+      @include lg-button;
+    }
+  }
+  .students-say {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    font-weight: 900;
+    font-size: 64px;
+    bottom: 10;
+    background-color: #634C00;
+    border-radius: 24px;
+  }
 }

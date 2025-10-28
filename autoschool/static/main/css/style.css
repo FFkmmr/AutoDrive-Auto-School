@@ -1,10 +1,8 @@
 /* ===========================
-   VARIABLES
-   =========================== */
-/* ===========================
    BASE SCSS RESET
    =========================== */
 @import url("https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 * *,
 * *::before,
 * *::after {
@@ -41,7 +39,6 @@
 }
 * body {
   line-height: 1;
-  font-family: "Jura", sans-serif;
 }
 * blockquote,
 * q {
@@ -64,6 +61,9 @@
   display: flex;
   justify-content: center;
 }
+* html {
+  height: 100%;
+}
 * main {
   width: 100%;
   height: 100%;
@@ -73,10 +73,19 @@
 /* ===========================
    VARIABLES
    =========================== */
+@keyframes spin {
+  from {
+    translate: 0;
+  }
+  to {
+    translate: -100%;
+  }
+}
 /* ===========================
    NAVIGATION
    =========================== */
 nav {
+  font-family: "Inter", sans-serif;
   position: fixed;
   display: flex;
   z-index: 100;
@@ -146,6 +155,10 @@ nav .nav-block .language-changer p {
 /* ===========================
    BODY
    =========================== */
+body {
+  font-family: "Inter", sans-serif;
+}
+
 .image-block-1 {
   display: flex;
   width: 100%;
@@ -196,14 +209,15 @@ nav .nav-block .language-changer p {
 }
 
 .why-we-block {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  position: relative;
-  height: 807px;
+  background-image: url("../img/why-we-back.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 577px;
   width: 100%;
-  display: flex;
 }
 .why-we-block .infinite-line-block {
   width: 90%;
@@ -216,8 +230,8 @@ nav .nav-block .language-changer p {
 }
 .why-we-block .infinite-line-block .carousel {
   display: flex;
-  overflow-x: auto;
   scrollbar-width: none;
+  overflow-x: auto;
 }
 .why-we-block .infinite-line-block .carousel::-webkit-scrollbar {
   width: 0;
@@ -229,21 +243,140 @@ nav .nav-block .language-changer p {
   align-items: center;
   justify-content: center;
   animation: spin 15s infinite linear;
+  height: 390px;
 }
 .why-we-block .infinite-line-block .carousel .group .card {
   margin-right: 10px;
-  flex: 0 0 5em;
-  height: 6em;
+  height: 290px;
+  width: 335px;
   font-size: 3rem;
+  position: relative;
+  overflow: visible;
+}
+.why-we-block .infinite-line-block .carousel .group .card .card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.why-we-block .infinite-line-block .carousel .group .card .card-btn {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+.why-we-block .infinite-line-block .carousel .group .card p {
+  position: relative;
+  color: white;
+  top: 175px;
+  max-width: 95%;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  z-index: 4;
+}
+.why-we-block h1 {
+  display: flex;
+  align-items: end;
+  height: 84%;
+  color: #FFDAAF;
+  font-size: 200px;
+  font-weight: 900;
+  overflow: hidden;
 }
 
-@keyframes spin {
-  from {
-    translate: 0;
-  }
-  to {
-    translate: -100%;
-  }
+.image-block-2 {
+  position: relative;
+  height: 770px;
+  width: 100%;
+  background-image: url("../img/main-about-block-background.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.image-block-2 .cards-block {
+  position: absolute;
+  top: -82px;
+  width: 100%;
+  padding: 0 18%;
+  display: flex;
+  justify-content: space-around;
+}
+.image-block-2 .cards-block .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.image-block-2 .cards-block .card .card-icon {
+  width: 165px;
+  height: 165px;
+}
+.image-block-2 .cards-block .card .card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 22px;
+  color: white;
+}
+.image-block-2 .cards-block .card .card-text h3 {
+  font-size: 24px;
+  font-weight: 900;
+}
+.image-block-2 .cards-block .card .card-text h1 {
+  font-size: 40px;
+  font-weight: 600;
+  color: #FFBB00;
+}
+.image-block-2 p {
+  position: relative;
+  top: 240px;
+  width: 100%;
+  padding-left: 150px;
+  padding-right: 150px;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  font-weight: 600;
+  font-family: "Jura", sans-serif;
+}
+.image-block-2 .lg-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  position: relative;
+  gap: 20px;
+  top: 380px;
+}
+.image-block-2 .lg-buttons .lg-button {
+  display: flex;
+  width: 300px;
+  height: 54px;
+  border-radius: 27px;
+  justify-content: center;
+  align-items: center;
+  font-family: "Jura", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  background-color: #FFD261;
+}
+.image-block-2 .students-say {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  font-weight: 900;
+  font-size: 64px;
+  bottom: 10;
+  background-color: #634C00;
+  border-radius: 24px;
 }
 
 /*# sourceMappingURL=style.css.map */
