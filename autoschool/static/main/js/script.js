@@ -1,20 +1,15 @@
-const line = document.querySelector('.line');
+const carousel = document.querySelector('.carousel');
+const group = carousel.querySelector('.group');
 
-// Клонируем все элементы, чтобы создать бесконечность
-const clones = Array.from(line.children).map(img => img.cloneNode(true));
-clones.forEach(clone => line.appendChild(clone));
+// получаем ширину блока и карусели
+const groupWidth = group.offsetWidth;
+const carouselWidth = carousel.offsetWidth;
 
-let speed = 1; // скорость прокрутки в px за кадр
-let pos = 0;
+// считаем, сколько блоков нужно добавить
+const blocksNeeded = Math.ceil(carouselWidth / groupWidth) + 1;
 
-function animate() {
-    pos -= speed;
-    // Когда первая половина пройдена, сбрасываем позицию
-    if (pos <= -line.scrollWidth / 2) {
-        pos = 0;
-    }
-    line.style.transform = `translateX(${pos}px)`;
-    requestAnimationFrame(animate);
+for (let i = 0; i < blocksNeeded; i++) {
+  const clone = group.cloneNode(true);
+  clone.setAttribute('aria-hidden', 'true');
+  carousel.appendChild(clone);
 }
-
-animate();

@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* ===========================
    VARIABLES
    =========================== */
@@ -48,12 +47,6 @@
 * q {
   quotes: none;
 }
-* blockquote::before, * blockquote::after,
-* q::before,
-* q::after {
-  content: "";
-  content: none;
-}
 * button,
 * input,
 * select,
@@ -68,6 +61,13 @@
 * body {
   height: 100%;
   width: 100%;
+  display: flex;
+  justify-content: center;
+}
+* main {
+  width: 100%;
+  height: 100%;
+  max-width: 2560px;
 }
 
 /* ===========================
@@ -204,7 +204,6 @@ nav .nav-block .language-changer p {
   height: 807px;
   width: 100%;
   display: flex;
-  border: 1px solid red;
 }
 .why-we-block .infinite-line-block {
   width: 90%;
@@ -215,37 +214,27 @@ nav .nav-block .language-changer p {
   display: flex;
   align-items: center;
 }
-
-.carousel {
-  margin: 100px auto;
-  width: 100%;
+.why-we-block .infinite-line-block .carousel {
   display: flex;
   overflow-x: auto;
-  -ms-overflow-style: none;
   scrollbar-width: none;
-  gap: 1rem;
 }
-.carousel::-webkit-scrollbar {
+.why-we-block .infinite-line-block .carousel::-webkit-scrollbar {
   width: 0;
   height: 0;
-  background: transparent; /* или просто можно не указывать */
+  background: transparent;
 }
-
-.group {
+.why-we-block .infinite-line-block .carousel .group {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  animation: spin 5s infinite linear;
+  animation: spin 15s infinite linear;
 }
-
-.card {
+.why-we-block .infinite-line-block .carousel .group .card {
+  margin-right: 10px;
   flex: 0 0 5em;
-  height: 5em;
+  height: 6em;
   font-size: 3rem;
-  border-radius: 0.2em;
-  text-align: center;
-  align-content: center;
 }
 
 @keyframes spin {
