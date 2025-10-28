@@ -1,0 +1,260 @@
+@charset "UTF-8";
+/* ===========================
+   VARIABLES
+   =========================== */
+/* ===========================
+   BASE SCSS RESET
+   =========================== */
+@import url("https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap");
+* *,
+* *::before,
+* *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: inherit;
+}
+* ul,
+* ol {
+  list-style: none;
+}
+* a {
+  text-decoration: none;
+  color: inherit;
+}
+* table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+* article,
+* aside,
+* details,
+* figcaption,
+* figure,
+* footer,
+* header,
+* hgroup,
+* main,
+* menu,
+* nav,
+* section {
+  display: block;
+}
+* body {
+  line-height: 1;
+  font-family: "Jura", sans-serif;
+}
+* blockquote,
+* q {
+  quotes: none;
+}
+* blockquote::before, * blockquote::after,
+* q::before,
+* q::after {
+  content: "";
+  content: none;
+}
+* button,
+* input,
+* select,
+* textarea {
+  font: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+}
+* html,
+* body {
+  height: 100%;
+  width: 100%;
+}
+
+/* ===========================
+   VARIABLES
+   =========================== */
+/* ===========================
+   NAVIGATION
+   =========================== */
+nav {
+  position: fixed;
+  display: flex;
+  z-index: 100;
+  width: 100%;
+  height: 90px;
+  background-color: white;
+  border-bottom: 4px solid #FF9924;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+}
+nav .logo-block {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+nav .logo-block img {
+  margin-left: 25px;
+  height: 75px;
+}
+nav .nav-block {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+}
+nav .nav-block .navigation {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  gap: 15px;
+}
+nav .nav-block .navigation a {
+  overflow: visible;
+  padding: 10px;
+  border-radius: 15px 15px 0 0;
+  max-height: 52px;
+  font-weight: 600;
+}
+nav .nav-block .navigation a.is-active {
+  background-color: #FF9924;
+  font-weight: bold;
+  color: white;
+}
+nav .nav-block .language-changer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  max-width: 120px;
+}
+nav .nav-block .language-changer form {
+  border: 1px solid;
+  padding: 5px;
+  border-radius: 20px;
+}
+nav .nav-block .language-changer p {
+  color: #949494;
+}
+
+.navigation-compensator {
+  position: relative;
+  width: 100%;
+  height: 90px;
+}
+
+.AutoDrive {
+  color: #FF9924;
+}
+
+/* ===========================
+   BODY
+   =========================== */
+.image-block-1 {
+  display: flex;
+  width: 100%;
+  height: 708px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: "Jura", sans-serif;
+}
+.image-block-1 .text-block {
+  width: auto;
+  flex: 2;
+  color: white;
+  padding: 8% 0 0 13%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.image-block-1 .text-block h1 {
+  font-size: 80px;
+  color: #FF9924;
+  font-weight: 600;
+}
+.image-block-1 .text-block p {
+  margin-left: 20px;
+  font-size: 24px;
+  font-weight: 500;
+}
+.image-block-1 .button-block {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  flex: 1;
+  justify-content: center;
+  padding-bottom: 150px;
+  gap: 20px;
+}
+.image-block-1 .button-block a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 27px;
+  font-size: 22px;
+  font-weight: 600;
+  width: 300px;
+  height: 54px;
+  background-color: #FFD261;
+}
+
+.why-we-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 807px;
+  width: 100%;
+  display: flex;
+  border: 1px solid red;
+}
+.why-we-block .infinite-line-block {
+  width: 90%;
+  position: absolute;
+  justify-self: center;
+  top: -23%;
+  height: 354px;
+  display: flex;
+  align-items: center;
+}
+
+.carousel {
+  margin: 100px auto;
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  gap: 1rem;
+}
+.carousel::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent; /* или просто можно не указывать */
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  animation: spin 5s infinite linear;
+}
+
+.card {
+  flex: 0 0 5em;
+  height: 5em;
+  font-size: 3rem;
+  border-radius: 0.2em;
+  text-align: center;
+  align-content: center;
+}
+
+@keyframes spin {
+  from {
+    translate: 0;
+  }
+  to {
+    translate: -100%;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
