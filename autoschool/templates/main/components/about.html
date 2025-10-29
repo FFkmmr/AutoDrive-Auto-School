@@ -10,24 +10,134 @@
 </div>
 
 <div class="about-second-block">
-    <h1>О НАС</h1>
+    <h1>О <span style="color: #FF9924">НАС</span></h1>
     <img src="{% static 'main/img/people/people_1234.svg' %}" alt="">
     <div class="text-block">
-        <p>Академия AutoDrive предлагает инновационный подход к обучению вождению, который охватывает широкий спектр знаний и навыков, полностью подготавливающих наших учеников к самостоятельному вождению. Наши проверенные методы соответствуют современным требованиям и сосредоточены на актуальных проблемах и факторах риска, с которыми сталкиваются водители сегодня. </p>
-        <p>Академия AutoDrive подходит для водителей любого уровня — от начинающих до тех, кто хочет освежить свои навыки. Мы подбираем обучение в соответствии с вашими потребностями. Наша цель — дать вам необходимые навыки, уверенность и осознанность, чтобы вы могли безопасно продолжать свой путь за рулём.</p>
+        <p>Академия <span style="color: #FF9924">AutoDrive</span> предлагает инновационный подход к обучению вождению, который охватывает широкий спектр знаний и навыков, полностью подготавливающих наших учеников к самостоятельному вождению. Наши проверенные методы соответствуют современным требованиям и сосредоточены на актуальных проблемах и факторах риска, с которыми сталкиваются водители сегодня. </p>
+        <p>Академия <span style="color: #FF9924">AutoDrive</span> подходит для водителей любого уровня — от начинающих до тех, кто хочет освежить свои навыки. Мы подбираем обучение в соответствии с вашими потребностями. Наша цель — дать вам необходимые навыки, уверенность и осознанность, чтобы вы могли безопасно продолжать свой путь за рулём.</p>
     </div>
 </div>
 
 <div class="about-third-block">
     <div class="left-block">
-        <h1>Наша Миссия</h1>
+        <h1>Наша <span style="color: #FF9924; font-weight: 600;">Миссия</span></h1>
         <p>Мы стремимся повлиять на как можно большее количество людей, чтобы они стали лучшими водителями, какими только могут быть. Наши инструкторы постоянно ищут новые и более эффективные методы обучения. Каждый сотрудник компании старается делать процесс обучения лучше с каждым днём.</p>
     </div>
     <div class="right-block">
-        <h1>Наша Цель</h1>
+        <h1>Наша <span style="color: #FF9924; font-weight: 600;">Цель</span></h1>
         <p>Наша цель - обеспечить безопасность повседневных водителей и сделать Молдову более безопасным и эффективным местом для вождения. Мы стремимся предоставлять обучение вождению на самом высоком уровне. Нет ничего приятнее, чем видеть улыбки наших учеников после успешной сдачи ими дорожного теста.</p>
     </div>
 </div>
 
+<div class="about-fourth-block">
+    <div class="first-about-fourth-block-block">
+        <h1>Почему <span style="color: #FF9924">Выбирают Нас?</span></h1>
+    </div>
+    <div class="second-about-fourth-block-block">
 
+        <div class="comments-block swiper">
+            <div class="card-wrapper">
+                <ul class="card-list swiper-wrapper">
+                    <li class="card-item swiper-slide">
+                        <div class="card-link">
+                            <div class="first-block">
+                                <img src="{% static 'main/img/people/people_1.svg' %}" alt="">
+                            </div>
+                            <div class="centre-changer-block">
+                                <!-- Navigation buttons -->
+                                <div class="swiper-button-prev">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="swiper-button-next">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>  
+                            </div>
+                            <div class="second-block">
+                                <img src="{% static 'main/img/comments/stars.svg' %}" alt="{% trans 'Рейтинг' %}">
+                                <p class="card-title">{% blocktrans %}Я начинал не просто с нулевыми знаниями, но и с очень сильным волнением перед вождением. Инструкторы здесь спокойные, дружелюбные, уверенно направляют и всегда дают полезные советы. Очень рекомендую их уроки вождения!{% endblocktrans %}</p>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="card-item swiper-slide">
+                        <div class="card-link">
+                            <div class="first-block">
+                                <img src="{% static 'main/img/comments/ava2.svg' %}" alt="">
+                                <h2 class="badge">{% trans "Алина Чобану" %}</h2>
+                            </div>
+                            <div class="second-block">
+                                <img src="{% static 'main/img/comments/stars.svg' %}" alt="{% trans 'Рейтинг' %}">
+                                <p class="card-title">{% blocktrans %}Записаться на урок в день экзамена - было самым умным решением! Моим инструктором был Ион - он очень поддерживал, а пробный тест действительно помог подготовиться к экзамену. Определённо одна из лучших автошкол!{% endblocktrans %}</p>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="card-item swiper-slide">
+                        <div class="card-link">
+                            <div class="first-block">
+                                <img src="{% static 'main/img/comments/ava3.svg' %}" alt="">
+                                <h2 class="badge">{% trans "Влад Лупу" %}</h2>
+                            </div>
+                            <div class="second-block">
+                                <img src="{% static 'main/img/comments/stars.svg' %}" alt="{% trans 'Рейтинг' %}">
+                                <p class="card-title">{% blocktrans %}Безусловно, лучшая автошкола в Бельцах. Обучение хорошо организовано. Уроки вождения проводятся профессионально и очень качественно.{% endblocktrans %}</p>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="card-item swiper-slide">
+                        <div class="card-link">
+                            <div class="first-block">
+                                <img src="{% static 'main/img/comments/ava4.svg' %}" alt="">
+                                <h2 class="badge">{% trans "Мария Русу" %}</h2>
+                            </div>
+                            <div class="second-block">
+                                <img src="{% static 'main/img/comments/stars.svg' %}" alt="{% trans 'Рейтинг' %}">
+                              <p class="card-title">
+                                {% blocktrans %}
+                                Я настоятельно рекомендую автошколу AutoDrive — независимо от того, новичок вы или, как я, возвращаетесь к вождению и хотите получить полноценные водительские права. Это спокойная, без лишнего стресса автошкола. Считаю, что это лучшие курсы вождения.
+                                {% endblocktrans %}
+                              </p>
+                            </div>
+                      </div>
+                    </li>
+                </ul>
+                <div class="swiper-pagination"></div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    <div class="left-block">
+        <h1>{% trans "Наши соц-сети:" %}</h1>
+        <div>
+            <img src="{% static 'main/img/socials/tt.svg' %}" alt="">
+            <img src="{% static 'main/img/socials/yt.svg' %}" alt="">
+            <img src="{% static 'main/img/socials/fb.svg' %}" alt="">
+            <img src="{% static 'main/img/socials/is.svg' %}" alt="">
+            <img src="" alt="">
+        </div>
+        <p>{% blocktrans %}© 2025 Mitsuhano & Arbuzzzio — Design & Development{% endblocktrans %}</p>
+    </div>
+    <div class="center-block">
+        <img src="{% static 'main/img/footer-logo.svg' %}" alt="">
+    </div>
+    <div class="right-block">
+        <div class="first-block">
+            <h1>{% trans "Обратная связь:" %}</h1>
+            <input placeholder="{% trans 'Email...' %}" type="text">
+            <div class="lg-button">{% trans "Отправить" %}</div>
+        </div>
+        <div class="second-block">
+            <textarea placeholder="{% blocktrans %}Опишите что вас интересует и администрация автошколы ответит вам в ближайшее время...{% endblocktrans %}"></textarea>
+        </div>
+    </div>
+</footer>
 {% endblock %}
