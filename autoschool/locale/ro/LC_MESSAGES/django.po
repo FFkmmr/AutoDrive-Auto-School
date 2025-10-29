@@ -8,26 +8,277 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-27 20:18+0200\n"
+"POT-Creation-Date: 2025-10-29 01:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language-Team: Romanian <LL@li.org>\n"
+"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
 "2:1));\n"
 
-#: .\autoschool\templates\main\components\home.html:4
+#: .\templates\main\components\about.html:4
+#: .\templates\main\components\booking.html:4
+#: .\templates\main\components\contact.html:4
+#: .\templates\main\components\home.html:5
 msgid "Главная страница"
-msgstr "WFDDDDDDDDD"
+msgstr "Pagina principală"
 
-#: .\autoschool\templates\main\components\home.html:7
+#: .\templates\main\components\about.html:7
+#: .\templates\main\components\booking.html:7
+#: .\templates\main\components\contact.html:7
 msgid "Добро пожаловать!"
-msgstr "WWWWWWWWWWWWWW"
+msgstr "Bine ați venit!"
 
-#: .\autoschool\templates\main\components\home.html:8
+#: .\templates\main\components\about.html:9
+#: .\templates\main\components\booking.html:9
+#: .\templates\main\components\contact.html:9
 #, python-format
-msgid "Привет, %(user.username|default:\"гость\")s!"
-msgstr "CCCCCCCCCCCCCCCCCCCC"
+msgid ""
+"\n"
+"Привет, %(username)s!\n"
+msgstr ""
+"\n"
+"Salut, %(username)s!\n"
+
+#: .\templates\main\components\home.html:11
+msgid "Академия вождения"
+msgstr "Academia de conducere"
+
+#: .\templates\main\components\home.html:12
+msgid ""
+"Станьте профессиональным водителем вместе с <span "
+"class=\"AutoDrive\">AutoDrive</span>!"
+msgstr ""
+"Deveniți un șofer profesionist împreună cu <span "
+"class=\"AutoDrive\">AutoDrive</span>!"
+
+#: .\templates\main\components\home.html:15
+msgid "Индивидуальные уроки"
+msgstr "Lecții individuale"
+
+#: .\templates\main\components\home.html:16
+msgid "Курсы по вождению"
+msgstr "Cursuri de conducere"
+
+#: .\templates\main\components\home.html:22
+#: .\templates\main\components\home.html:52
+msgid "Столб"
+msgstr "Stâlp"
+
+#: .\templates\main\components\home.html:28
+msgid "ПОДГОТОВКИ К ДОРОЖНОМУ ТЕСТУ"
+msgstr "PREGĂTIRE PENTRU TESTUL RUTIER"
+
+#: .\templates\main\components\home.html:33
+msgid "КУРС ЗАЩИТНОГО ВОЖДЕНИЯ"
+msgstr "CURS DE CONDUCERE DEFENSIVĂ"
+
+#: .\templates\main\components\home.html:38
+msgid "ДОСТУП К МАТЕРИАЛАМ ДЛЯ САМООБУЧЕНИЯ"
+msgstr "ACCES LA MATERIALE PENTRU AUTOÎNVĂȚARE"
+
+#: .\templates\main\components\home.html:43
+msgid "УРОКИ ВОЖДЕНИЯ"
+msgstr "LECȚII DE CONDUCERE"
+
+#: .\templates\main\components\home.html:48
+msgid "ПАКЕТЫ ЗАНЯТИЙ ПО ВОЖДЕНИЮ"
+msgstr "PACHETE DE CURSURI DE CONDUCERE"
+
+#: .\templates\main\components\home.html:55
+msgid "ПОЧЕМУ МЫ?"
+msgstr "DE CE NOI?"
+
+#: .\templates\main\components\home.html:61
+msgid "Календарь"
+msgstr "Calendar"
+
+#: .\templates\main\components\home.html:63
+msgid "ГИБКОЕ"
+msgstr "FLEXIBIL"
+
+#: .\templates\main\components\home.html:64
+msgid "РАСПИСАНИЕ"
+msgstr "PROGRAM"
+
+#: .\templates\main\components\home.html:69
+msgid "Опыт"
+msgstr "Experiență"
+
+#: .\templates\main\components\home.html:71
+msgid "БЕЗУПРЕЧНОЕ"
+msgstr "IMPECABIL"
+
+#: .\templates\main\components\home.html:72
+msgid "ОБУЧЕНИЕ"
+msgstr "INSTRUIRE"
+
+#: .\templates\main\components\home.html:77
+msgid "Процент сдачи"
+msgstr "Procent de promovare"
+
+#: .\templates\main\components\home.html:79
+msgid "ВЫСОКИЙ"
+msgstr "RIDICAT"
+
+#: .\templates\main\components\home.html:80
+msgid "ПРОЦЕНТ СДАЧИ"
+msgstr "PROCENT DE PROMOVARE"
+
+#: .\templates\main\components\home.html:85
+msgid ""
+"Наша цель — обучить водителей навыкам, необходимым для уверенности, "
+"внимательности и защитного стиля вождения. Безопасность на дороге на "
+"протяжении всей жизни — наш главный приоритет."
+msgstr ""
+"Scopul nostru este să instruim șoferii cu abilități necesare pentru "
+"încredere, atenție și stil defensiv de conducere. Siguranța rutieră pe toată "
+"durata vieții este prioritatea noastră principală."
+
+#: .\templates\main\components\home.html:88
+msgid "Остались вопросы?"
+msgstr "Mai aveți întrebări?"
+
+#: .\templates\main\components\home.html:89
+msgid "Записаться на курс"
+msgstr "Înscrieți-vă la curs"
+
+#: .\templates\main\components\home.html:93
+msgid "Наши"
+msgstr "Elevii noștri"
+
+#: .\templates\main\components\home.html:93
+msgid "Студенты Говорят"
+msgstr "vorbesc"
+
+#: .\templates\main\components\home.html:105
+msgid "Андрей Морару"
+msgstr "Andrei Moraru"
+
+#: .\templates\main\components\home.html:108
+#: .\templates\main\components\home.html:121
+#: .\templates\main\components\home.html:134
+#: .\templates\main\components\home.html:147
+msgid "Рейтинг"
+msgstr "Rating"
+
+#: .\templates\main\components\home.html:109
+msgid ""
+"Я начинал не просто с нулевыми знаниями, но и с очень сильным волнением "
+"перед вождением. Инструкторы здесь спокойные, дружелюбные, уверенно "
+"направляют и всегда дают полезные советы. Очень рекомендую их уроки вождения!"
+msgstr ""
+"Am început nu doar cu cunoștințe zero, dar și cu o mare emoție înainte de "
+"condus. Instructorii aici sunt calmi, prietenoși, oferă îndrumări clare și "
+"întotdeauna dau sfaturi utile. Recomand foarte mult lecțiile lor de condus!"
+
+#: .\templates\main\components\home.html:118
+msgid "Алина Чобану"
+msgstr "Alina Ciobanu"
+
+#: .\templates\main\components\home.html:122
+msgid ""
+"Записаться на урок в день экзамена - было самым умным решением! Моим "
+"инструктором был Ион - он очень поддерживал, а пробный тест действительно "
+"помог подготовиться к экзамену. Определённо одна из лучших автошкол!"
+msgstr ""
+"Înscrierea la lecție în ziua examenului a fost cea mai înțeleaptă decizie! "
+"Instructorul meu a fost Ion - a oferit mult sprijin, iar testul de probă a "
+"ajutat cu adevărat la pregătirea pentru examen. Cu siguranță una dintre cele "
+"mai bune școli auto!"
+
+#: .\templates\main\components\home.html:131
+msgid "Влад Лупу"
+msgstr "Vlad Lupu"
+
+#: .\templates\main\components\home.html:135
+msgid ""
+"Безусловно, лучшая автошкола в Бельцах. Обучение хорошо организовано. Уроки "
+"вождения проводятся профессионально и очень качественно."
+msgstr ""
+"Cu siguranță cea mai bună școală auto din Bălți. Instruirea este bine "
+"organizată. Lecțiile de condus sunt desfășurate profesional și foarte "
+"calitativ."
+
+#: .\templates\main\components\home.html:144
+msgid "Мария Русу"
+msgstr "Maria Rusu"
+
+#: .\templates\main\components\home.html:149
+msgid ""
+"\n"
+"                            Я настоятельно рекомендую автошколу AutoDrive — "
+"независимо от того, новичок вы или, как я, возвращаетесь к вождению и хотите "
+"получить полноценные водительские права. Это спокойная, без лишнего стресса "
+"автошкола. Считаю, что это лучшие курсы вождения.\n"
+"                            "
+msgstr ""
+"\n"
+"Recomand cu căldură școala auto AutoDrive — indiferent dacă sunteți începător sau, "
+"ca mine, reveniți la condus și doriți să obțineți permisul de conducere complet. "
+"Este o școală auto liniștită, fără stres inutil. Consider că acestea sunt cele mai "
+"bune cursuri de condus.\n"
+"                            "
+
+#: .\templates\main\components\home.html:166
+msgid ""
+"Ищете надёжную автошколу в Молдове, в Бельцах? AutoDrive — ваш уверенный "
+"партнёр на пути к получению водительских прав и безопасному вождению."
+msgstr "Căutați o școală auto de încredere în Moldova, în Bălți? AutoDrive este partenerul dvs. de încredere pe drumul către obținerea permisului de conducere și conducerea în siguranță."
+
+#: .\templates\main\components\home.html:167
+msgid "Читать Далее"
+msgstr "Citește mai departe"
+
+#: .\templates\main\components\home.html:173
+msgid "Наши соц-сети:"
+msgstr "Rețelele noastre sociale:"
+
+#: .\templates\main\components\home.html:181
+msgid "© 2025 Mitsuhano & Arbuzzzio — Design & Development"
+msgstr "© 2025 Mitsuhano & Arbuzzzio — Design & Development"
+
+#: .\templates\main\components\home.html:188
+msgid "Обратная связь:"
+msgstr "Feedback:"
+
+#: .\templates\main\components\home.html:189
+msgid "Email..."
+msgstr "Email..."
+
+#: .\templates\main\components\home.html:190
+msgid "Отправить"
+msgstr "Trimite"
+
+#: .\templates\main\components\home.html:193
+msgid ""
+"Опишите что вас интересует и администрация автошколы ответит вам в ближайшее "
+"время..."
+msgstr "Descrieți ce vă interesează și administrația școlii auto vă va răspunde în cel mai scurt timp..."
+
+#: .\templates\main\index.html:15
+msgid "AutoDrive"
+msgstr "AutoDrive"
+
+#: .\templates\main\index.html:24
+msgid "Главная"
+msgstr "Acasă"
+
+#: .\templates\main\index.html:25
+msgid "О нас"
+msgstr "Despre noi"
+
+#: .\templates\main\index.html:26
+msgid "Запись онлайн"
+msgstr "Înscriere online"
+
+#: .\templates\main\index.html:27
+msgid "Контакты"
+msgstr "Contact"
+
+#: .\templates\main\index.html:41
+msgid "Войти"
+msgstr "Autentificare"

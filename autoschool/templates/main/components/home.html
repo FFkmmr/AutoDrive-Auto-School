@@ -1,101 +1,197 @@
-{% extends "main/index.html" %}
+{% extends "index.html" %}
 {% load static %}
 {% load i18n %}
 
-{% block title %}{% trans "Главная страница" %}{% endblock %}
+{% block title %}AutoDrive{% endblock %}
 
 {% block content %}
 
-    <div class="image-block-1" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/static/main/img/home-backgr-1.png');">
-        <div class="text-block">
-            <h1>Академия вождения</h1>
-            <p>Станьте профеcсиональным водителем <br> вместе с <span class="AutoDrive">AutoDrive</span>!</p>
-        </div>
-        <div class="button-block">
-            <a href="{% url 'booking' %}?active_page=booking">Индивидуальные уроки</a>
-            <a href="{% url 'booking' %}?active_page=booking">Курсы по вождению</a>
-        </div>
+<div class="image-block-1" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/static/main/img/backgrounds/home-backgr-1.png');">
+    <div class="text-block">
+        <h1>{% trans "Академия вождения" %}</h1>
+        <p>{% blocktrans %}Станьте профессиональным водителем вместе с <span class="AutoDrive">AutoDrive</span>!{% endblocktrans %}</p>
     </div>
+    <div class="button-block">
+        <a href="{% url 'booking' %}?active_page=booking">{% trans "Индивидуальные уроки" %}</a>
+        <a href="{% url 'booking' %}?active_page=booking">{% trans "Курсы по вождению" %}</a>
+    </div>
+</div>
 
-    <div class="why-we-block">
-        <div class="infinite-line-block">
-            <img style="z-index: 5; height: 350px; position: absolute; top: 20px;" src="{% static 'main/img/infinite-line/stolb.png' %}" alt="">
-            <div class="carousel">
-                <div class="group">
-                    <div class="card">
-                        <img class="card-image" src="{% static 'main/img/infinite-line/1.svg' %}" alt="">
-                        <img class="card-btn" src="{% static 'main/img/btns/go-to-btn.svg' %}" alt="">
-                        <p>ПОДГОТОВКИ К ДОРОЖНОМУ ТЕСТУ</p>
-                    </div>
-                    <div class="card">
-                        <img class="card-image" src="{% static 'main/img/infinite-line/2.svg' %}" alt="">
-                        <img class="card-btn" src="{% static 'main/img/btns/go-to-btn.svg' %}" alt="">
-                        <p>КУРС ЗАЩИТНОГО ВОЖДЕНИЯ</p>
-                    </div>
-                    <div class="card">
-                        <img class="card-image" src="{% static 'main/img/infinite-line/3.svg' %}" alt="">
-                        <img class="card-btn" src="{% static 'main/img/btns/go-to-btn.svg' %}" alt="">
-                        <p>ДОСТУП К МАТЕРИАЛАМ ДЛЯ САМООБУЧЕНИЯ</p>
-                    </div>
-                    <div class="card">
-                        <img class="card-image" src="{% static 'main/img/infinite-line/4.svg' %}" alt="">
-                        <img class="card-btn" src="{% static 'main/img/btns/go-to-btn.svg' %}" alt="">
-                        <p>УРОКИ ВОЖДЕНИЯ</p>
-                    </div>
-                    <div class="card">
-                        <img class="card-image" src="{% static 'main/img/infinite-line/5.svg' %}" alt="">
-                        <img class="card-btn" src="{% static 'main/img/btns/go-to-btn.svg' %}" alt="">
-                        <p>ПАКЕТЫ ЗАНЯТИЙ ПО ВОЖДЕНИЮ</p>
-                    </div>
+<div class="why-we-block">
+    <div class="infinite-line-block">
+        <img style="z-index: 5; height: 350px; position: absolute; top: 20px;" src="{% static 'main/img/infinite-line/stolb.png' %}" alt="{% trans 'Столб' %}">
+        <div class="carousel">
+            <div class="group">
+                <div class="card">
+                    <img class="card-image" src="{% static 'main/img/infinite-line/1.svg' %}" alt="">
+                    <img class="card-btn" src="{% static 'main/img/btns/go-to-btn.svg' %}" alt="">
+                    <p>{% trans "ПОДГОТОВКИ К ДОРОЖНОМУ ТЕСТУ" %}</p>
+                </div>
+                <div class="card">
+                    <img class="card-image" src="{% static 'main/img/infinite-line/2.svg' %}" alt="">
+                    <img class="card-btn" src="{% static 'main/img/btns/go-to-btn.svg' %}" alt="">
+                    <p>{% trans "КУРС ЗАЩИТНОГО ВОЖДЕНИЯ" %}</p>
+                </div>
+                <div class="card">
+                    <img class="card-image" src="{% static 'main/img/infinite-line/3.svg' %}" alt="">
+                    <img class="card-btn" src="{% static 'main/img/btns/go-to-btn.svg' %}" alt="">
+                    <p>{% trans "ДОСТУП К МАТЕРИАЛАМ ДЛЯ САМООБУЧЕНИЯ" %}</p>
+                </div>
+                <div class="card">
+                    <img class="card-image" src="{% static 'main/img/infinite-line/4.svg' %}" alt="">
+                    <img class="card-btn" src="{% static 'main/img/btns/go-to-btn.svg' %}" alt="">
+                    <p>{% trans "УРОКИ ВОЖДЕНИЯ" %}</p>
+                </div>
+                <div class="card">
+                    <img class="card-image" src="{% static 'main/img/infinite-line/5.svg' %}" alt="">
+                    <img class="card-btn" src="{% static 'main/img/btns/go-to-btn.svg' %}" alt="">
+                    <p>{% trans "ПАКЕТЫ ЗАНЯТИЙ ПО ВОЖДЕНИЮ" %}</p>
                 </div>
             </div>
-            <img style="height: 350px; position: absolute; right: 0; top: 20px;" src="{% static 'main/img/infinite-line/stolb.png' %}" alt="">
         </div>
-
-        <h1>ПОЧЕМУ МЫ?</h1>
+        <img style="height: 350px; position: absolute; right: 0; top: 20px;" src="{% static 'main/img/infinite-line/stolb.png' %}" alt="{% trans 'Столб' %}">
     </div>
 
-    <div class="image-block-2">
-        <div class="cards-block">
-          <div class="card">
-            <img class="card-icon" src="{% static 'main/img/kalendar.svg' %}" alt="kalendar">
-            <div class="card-text">
-              <h3>ГИБКОЕ</h3>
-              <h1>РАСПИСАНИЕ</h1>
-            </div>
-          </div>
+    <h1>{% trans "ПОЧЕМУ МЫ?" %}</h1>
+</div>
 
-          <div class="card">
-            <img class="card-icon" src="{% static 'main/img/exp.svg' %}" alt="exp">
-            <div class="card-text">
-              <h3>БЕЗУПРЕЧНОЕ</h3>
-              <h1>ОБУЧЕНИЕ</h1>
-            </div>
-          </div>
-
-          <div class="card">
-            <img class="card-icon" src="{% static 'main/img/pass_rate.svg' %}" alt="pass_rate">
-            <div class="card-text">
-              <h3>ВЫСОКИЙ</h3>
-              <h1>ПРОЦЕНТ СДАЧИ</h1>
-            </div>
-          </div>
+<div class="image-block-2">
+    <div class="cards-block">
+      <div class="card">
+        <img class="card-icon" src="{% static 'main/img/kalendar.svg' %}" alt="{% trans 'Календарь' %}">
+        <div class="card-text">
+          <h3>{% trans "ГИБКОЕ" %}</h3>
+          <h1>{% trans "РАСПИСАНИЕ" %}</h1>
         </div>
+      </div>
 
-        <p>Наша цель — обучить водителей навыкам, необходимым для уверенности, внимательности и защитного стиля вождения. Безопасность на дороге на протяжении всей жизни — наш главный приоритет.</p>
-
-        <div class="lg-buttons">
-            <div class="lg-button">Остались вопросы?</div>
-            <div class="lg-button">Записаться на курс</div>
+      <div class="card">
+        <img class="card-icon" src="{% static 'main/img/exp.svg' %}" alt="{% trans 'Опыт' %}">
+        <div class="card-text">
+          <h3>{% trans "БЕЗУПРЕЧНОЕ" %}</h3>
+          <h1>{% trans "ОБУЧЕНИЕ" %}</h1>
         </div>
+      </div>
 
-        <div class="students-say">
-            <h1>Наши <span style="color: #FFBB00">Студенты Говорят</span></h1>
+      <div class="card">
+        <img class="card-icon" src="{% static 'main/img/pass_rate.svg' %}" alt="{% trans 'Процент сдачи' %}">
+        <div class="card-text">
+          <h3>{% trans "ВЫСОКИЙ" %}</h3>
+          <h1>{% trans "ПРОЦЕНТ СДАЧИ" %}</h1>
         </div>
+      </div>
     </div>
 
+    <p>{% blocktrans %}Наша цель — обучить водителей навыкам, необходимым для уверенности, внимательности и защитного стиля вождения. Безопасность на дороге на протяжении всей жизни — наш главный приоритет.{% endblocktrans %}</p>
 
-    <div class="comments-block">
+    <div class="lg-buttons">
+        <div class="lg-button">{% trans "Остались вопросы?" %}</div>
+        <div class="lg-button">{% trans "Записаться на курс" %}</div>
+    </div>
+
+    <div class="students-say">
+        <h1>{% trans "Наши" %} <span style="color: #FFBB00">{% trans "Студенты Говорят" %}</span></h1>
+    </div>
+</div>
+
+<div class="comments-container">
+    <div class="comments-block swiper">
+        <div class="card-wrapper">
+            <ul class="card-list swiper-wrapper">
+                <li class="card-item swiper-slide">
+                    <div class="card-link">
+                        <div class="first-block">
+                            <img src="{% static 'main/img/comments/ava1.svg' %}" alt="">
+                            <h2 class="badge">{% trans "Андрей Морару" %}</h2>
+                        </div>
+                        <div class="second-block">
+                            <img src="{% static 'main/img/comments/stars.svg' %}" alt="{% trans 'Рейтинг' %}">
+                            <p class="card-title">{% blocktrans %}Я начинал не просто с нулевыми знаниями, но и с очень сильным волнением перед вождением. Инструкторы здесь спокойные, дружелюбные, уверенно направляют и всегда дают полезные советы. Очень рекомендую их уроки вождения!{% endblocktrans %}</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="card-item swiper-slide">
+                    <div class="card-link">
+                        <div class="first-block">
+                            <img src="{% static 'main/img/comments/ava2.svg' %}" alt="">
+                            <h2 class="badge">{% trans "Алина Чобану" %}</h2>
+                        </div>
+                        <div class="second-block">
+                            <img src="{% static 'main/img/comments/stars.svg' %}" alt="{% trans 'Рейтинг' %}">
+                            <p class="card-title">{% blocktrans %}Записаться на урок в день экзамена - было самым умным решением! Моим инструктором был Ион - он очень поддерживал, а пробный тест действительно помог подготовиться к экзамену. Определённо одна из лучших автошкол!{% endblocktrans %}</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="card-item swiper-slide">
+                    <div class="card-link">
+                        <div class="first-block">
+                            <img src="{% static 'main/img/comments/ava3.svg' %}" alt="">
+                            <h2 class="badge">{% trans "Влад Лупу" %}</h2>
+                        </div>
+                        <div class="second-block">
+                            <img src="{% static 'main/img/comments/stars.svg' %}" alt="{% trans 'Рейтинг' %}">
+                            <p class="card-title">{% blocktrans %}Безусловно, лучшая автошкола в Бельцах. Обучение хорошо организовано. Уроки вождения проводятся профессионально и очень качественно.{% endblocktrans %}</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="card-item swiper-slide">
+                    <div class="card-link">
+                        <div class="first-block">
+                            <img src="{% static 'main/img/comments/ava4.svg' %}" alt="">
+                            <h2 class="badge">{% trans "Мария Русу" %}</h2>
+                        </div>
+                        <div class="second-block">
+                            <img src="{% static 'main/img/comments/stars.svg' %}" alt="{% trans 'Рейтинг' %}">
+                          <p class="card-title">
+                            {% blocktrans %}
+                            Я настоятельно рекомендую автошколу AutoDrive — независимо от того, новичок вы или, как я, возвращаетесь к вождению и хотите получить полноценные водительские права. Это спокойная, без лишнего стресса автошкола. Считаю, что это лучшие курсы вождения.
+                            {% endblocktrans %}
+                          </p>
+                        </div>
+                  </div>
+                </li>
+            </ul>
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
 
     </div>
+    <div class="text-block">
+    <h3>{% blocktrans %}Ищете надёжную автошколу в Молдове, в Бельцах? AutoDrive — ваш уверенный партнёр на пути к получению водительских прав и безопасному вождению.{% endblocktrans %}</h3>
+    <p>{% trans "Читать Далее" %}</p>
+</div>
+</div>
+
+<footer>
+    <div class="left-block">
+        <h1>{% trans "Наши соц-сети:" %}</h1>
+        <div>
+            <img src="{% static 'main/img/socials/tt.svg' %}" alt="">
+            <img src="{% static 'main/img/socials/yt.svg' %}" alt="">
+            <img src="{% static 'main/img/socials/fb.svg' %}" alt="">
+            <img src="{% static 'main/img/socials/is.svg' %}" alt="">
+            <img src="" alt="">
+        </div>
+        <p>{% blocktrans %}© 2025 Mitsuhano & Arbuzzzio — Design & Development{% endblocktrans %}</p>
+    </div>
+    <div class="center-block">
+        <img src="{% static 'main/img/footer-logo.svg' %}" alt="">
+    </div>
+    <div class="right-block">
+        <div class="first-block">
+            <h1>{% trans "Обратная связь:" %}</h1>
+            <input placeholder="{% trans 'Email...' %}" type="text">
+            <div class="lg-button">{% trans "Отправить" %}</div>
+        </div>
+        <div class="second-block">
+            <textarea placeholder="{% blocktrans %}Опишите что вас интересует и администрация автошколы ответит вам в ближайшее время...{% endblocktrans %}"></textarea>
+        </div>
+    </div>
+</footer>
 {% endblock %}

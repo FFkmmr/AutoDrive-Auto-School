@@ -1,0 +1,54 @@
+{% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <div class="logo-block">
+            <img src="{% static 'main/img/logo.svg' %}" alt="logo">
+        </div>
+        <div class="nav-block">
+            <div class="navigation">
+                <a href="{% url 'home' %}?active_page=home" class="{% if active_page == 'home' or not active_page %}is-active{% endif %}">{% trans "Главная" %}</a>
+                <a href="{% url 'about' %}?active_page=about" class="{% if active_page == 'about' %}is-active{% endif %}">{% trans "О нас" %}</a>
+                <a href="{% url 'booking' %}?active_page=booking" class="{% if active_page == 'booking' %}is-active{% endif %}">{% trans "Запись онлайн" %}</a>
+                <a href="{% url 'contact' %}?active_page=contact" class="{% if active_page == 'contact' %}is-active{% endif %}">{% trans "Контакты" %}</a>
+            </div>
+            <div class="language-changer">
+                <form id="language-form" action="{% url 'set_language' %}" method="post">
+                    {% csrf_token %}
+                    <input name="next" id="language-next" type="hidden" value="{{ request.get_full_path }}">
+                    <select name="language" id="language-select" onchange="changeLanguage(this)">
+                        {% get_current_language as LANGUAGE_CODE %}
+                        {% get_available_languages as LANGUAGES %}
+                        {% for code, name in LANGUAGES %}
+                            <option value="{{ code }}" {% if code == LANGUAGE_CODE %}selected{% endif %}>{{ name }}</option>
+                        {% endfor %}
+                    </select>
+                </form>
+                <p>{% trans "Войти" %}</p>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="navigation-compensator"></div>
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+<script src="{% static 'main/js/script.js' %}"></script>
+</html>
