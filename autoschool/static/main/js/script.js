@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const swiperContainers = document.querySelectorAll('.card-wrapper');
     
     swiperContainers.forEach(function(container) {
-        new Swiper(container, {
+        const swiper = new Swiper(container, {
             loop: true,
             spaceBetween: 30,
 
@@ -58,6 +58,45 @@ document.addEventListener('DOMContentLoaded', function() {
                     slidesPerView: 3
                 },
             }
+        });
+
+        // Добавляем обработчики клика на картинки в блоке изображений
+        const imageBlocks = container.querySelectorAll('.cv-second-block-images-block');
+        
+        // Функция обновления курсоров и стилей для картинок
+        function updateImageCursors() {
+            const activeIndex = swiper.realIndex; // Получаем реальный индекс активного слайда
+            imageBlocks.forEach(function(imageBlock) {
+                const images = imageBlock.querySelectorAll('img');
+                images.forEach(function(img, index) {
+                    if (index === activeIndex) {
+                        img.style.cursor = 'default'; // Обычный курсор для активной картинки
+                        img.classList.add('active-image'); // Добавляем класс активной картинки
+                    } else {
+                        img.style.cursor = 'pointer'; // Курсор-указатель для неактивных
+                        img.classList.remove('active-image'); // Убираем класс активной картинки
+                    }
+                });
+            });
+        }
+        
+        // Инициализируем курсоры при загрузке
+        updateImageCursors();
+        
+        // Обновляем курсоры при смене слайда
+        swiper.on('slideChange', function() {
+            updateImageCursors();
+        });
+        
+        imageBlocks.forEach(function(imageBlock) {
+            const images = imageBlock.querySelectorAll('img');
+            images.forEach(function(img, index) {
+                img.addEventListener('click', function() {
+                    // Переключаемся на слайд с соответствующим индексом
+                    // Так как loop: true, используем slideToLoop для корректного переключения
+                    swiper.slideToLoop(index);
+                });
+            });
         });
     });
     // конец js комментариев

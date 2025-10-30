@@ -1,13 +1,42 @@
 {% extends "index.html" %}
+{% load static %}
 {% load i18n %}
 
 {% block title %}{% trans "Главная страница" %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Добро пожаловать!" %}</h1>
+<div class="booking-container">
+    <div class="info-form-block">
+        <div class="info-form-item">
+            <h2>{% trans "ФИО" %}</h2>
+            <input type="text" placeholder="{% trans 'Имя, Фамилия, Отчество' %}">
+        </div>
+        <div class="info-form-item">
+            <h2>{% trans "Номер телефона" %}</h2>
+            <input type="text" placeholder="+373   XX XXX XXX">
+        </div>
+        <div class="info-form-item">
+            <h2>{% trans "Почта" %}</h2>
+            <input type="text" placeholder="example@mail.com">
+        </div>
+        <div class="info-form-item">
+            <h2>{% trans "Тип урока" %}</h2>
+            <input type="text" placeholder="{% trans 'Теоретический экзамен категория B1/A1 – обычный' %}">
+            <img src="{% static 'main/img/btns/dropdown_btn.svg' %}" alt="">
+        </div>
+        <div class="info-form-item">
+            <h2>{% trans "Сопроводительное письмо" %}</h2>
+            <textarea placeholder="{% blocktrans %}Опишите что вас интересует и администрация автошколы ответит вам в ближайшее время...{% endblocktrans %}" name="" id=""></textarea>
+        </div>
+    </div>
+    <div class="data-form-block">
+        <h2>{% trans "Дата / Время" %}</h2>
+        <div class="calendar">
+            <img src="{% static 'main/img/calendar_fake.svg' %}" alt="">
+        </div>
+        <div class="md-button">{% trans "Отправить" %}</div>
+    </div>
 
-{% blocktrans with username=user.username|default:"гость" %}
-Привет, {{ username }}!
-{% endblocktrans %}
-
+    <p class="autors">© 2025 Mitsuhano & Arbuzzzio — Design & Development</p>
+</div>
 {% endblock %}

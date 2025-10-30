@@ -1,3 +1,66 @@
-from django.shortcuts import render
+from django.conf import settings
+from django.contrib import messages
+from django.shortcuts import redirect
+from django.urls import reverse
+from django.views.decorators.http import require_POST
 
-# Create your views here.
+import requests
+
+from .forms import FeedbackForm
+
+
+def _send_via_mailgun(email: str, message: str) -> tuple[bool, str]:
+	"""
+	Send an email using Mailgun HTTP API.
+
+	Returns (ok, detail) where ok indicates success and detail contains
+	an informational message or error description.
+	"""
+	api_key = getattr(settings, "MAILGUN_API_KEY", None)
+	domain = getattr(settings, "MAILGUN_DOMAIN", None)
+	sender = getattr(settings, "MAILGUN_FROM", None)
+	recipient = getattr(settings, "MAILGUN_TO", None)
+	base_url = getattr(settings, "MAILGUN_API_BASE_URL", "https://api.mailgun.net/v3")
+
+	if not all([api_key, domain, sender, recipient]):
+		return (
+			False,
+			"Mailgun is not configured. Please set MAILGUN_API_KEY, MAILGUN_DOMAIN, MAILGUN_FROM, MAILGUN_TO in settings or environment.",
+		)
+
+	url = f"{base_url}/{domain}/messages"
+	data = {
+		"from": sender,
+		"to": recipient,
+		"subject": "AutoDrive: New feedback message",
+		"text": f"From: {email}\n\n{message}",
+	}
+
+	try:
+		resp = requests.post(url, auth=("api", api_key), data=data, timeout=10)
+		if 200 <= resp.status_code < 300:
+			return True, "Message sent successfully."
+		return False, f"Mailgun error {resp.status_code}: {resp.text}"
+	except requests.RequestException as exc:
+		return False, f"Request failed: {exc}"
+
+
+@require_POST
+def send_feedback(request):
+	"""Handle feedback form submission and send via Mailgun."""
+	form = FeedbackForm(request.POST)
+	if not form.is_valid():
+		messages.error(request, "Please provide a valid email and message.")
+		# Redirect back to the referring page or home if not available
+		return redirect(request.META.get("HTTP_REFERER", reverse("home")))
+
+	email = form.cleaned_data["email"]
+	message = form.cleaned_data["message"]
+
+	ok, detail = _send_via_mailgun(email=email, message=message)
+	if ok:
+		messages.success(request, "Ваше сообщение отправлено. Спасибо!")
+	else:
+		messages.error(request, f"Не удалось отправить сообщение: {detail}")
+
+	return redirect(request.META.get("HTTP_REFERER", reverse("home")))

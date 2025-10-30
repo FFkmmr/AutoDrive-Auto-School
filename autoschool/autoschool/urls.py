@@ -9,4 +9,5 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
     path('', include('main.urls')),  # подключение приложения main
+    path('mail/', include('mailgun.urls')),  # mailgun endpoints
 )

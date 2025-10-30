@@ -114,6 +114,18 @@ $font-inter: 'Inter', sans-serif;
   font-weight: 600;
   background-color: $color-yellow;
 }
+@mixin md-button() {
+  display: flex;
+  width: 200px;
+  height: 54px;
+  border-radius: 27px;
+  justify-content: center;
+  align-items: center;
+  font-family: $font-jura;
+  font-size: 22px;
+  font-weight: 600;
+  background-color: $color-yellow;
+}
 @keyframes spin {
   from  {translate:0;}
   to {translate: -100%;}
@@ -192,6 +204,13 @@ nav {
   }
 }
 
+.autors {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: $color-txt-gray;
+}
+
 footer {
   display: flex;
   height: 300px;
@@ -213,12 +232,6 @@ footer {
       font-weight: 600;
       padding-bottom: 20px;
     }
-    p {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      color: $color-txt-gray;
-    }
   }
   .center-block {
     display: flex;
@@ -230,12 +243,18 @@ footer {
   }
   .right-block {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
     flex: 2;
-    font-size: 25px;
-    gap: 20px;
+
+    .feedback-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      flex: 2;
+      font-size: 25px;
+      gap: 20px;
+
+    }
 
     .first-block {
       display: flex;
@@ -676,9 +695,11 @@ body {
     position: absolute;
     font-size: 55px;
     font-weight: 600;
-    left: 55%;
+    left: 0;
+    top: 0;
   }
   .text-block {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -758,7 +779,7 @@ body {
     .comments-block {
       position: relative;
       top: 50px;  
-      height: 890px;
+      height: 900px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -769,44 +790,41 @@ body {
         margin: 0 60px 35px;
         padding: 20px 10px;
         overflow: hidden;
-        height: 885px;
+        height: 900px;
 
         .swiper-button-prev, .swiper-button-next {
+          display: flex;
+          align-items: center;
+          justify-content: center;
           color: $color-orange;
           border: 3px solid rgba(82, 82, 82, 0.103);
           padding: 14px;
           border-radius: 50px;
           width: 64px;
           height: 64px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
           
-          // Скрываем стандартную стрелку
+          &.swiper-button-prev {
+            position: absolute;
+            top: 50%;
+            left: 3%;
+            transform: translate(-50%, -50%);
+          }
+          
+          &.swiper-button-next {
+            position: absolute;
+            top: 50%;
+            left: 97%;
+            transform: translate(-50%, -50%);
+          }
           &:after {
             display: none;
           }
-          
-          // Стили для SVG
           svg {
             width: 24px;
             height: 24px;
             stroke: $color-orange;
           }
           
-          &.swiper-button-prev {
-            position: absolute;
-            top: 45%;
-            left: 50%;
-            transform: translate(-50%);
-          }
-          
-          &.swiper-button-next {
-            position: absolute;
-            top: 55%;
-            left: 50%;
-            transform: translate(-50%);
-          }
         }
 
         .swiper-pagination-bullet {
@@ -854,20 +872,62 @@ body {
 
             .centre-changer-block {
               position: relative;
+              top: 50%;
+              // left: 0;
+              transform: translate(-50%, -50%);
               height: 100%;
-              width:100px;
-              border: 1px solid; 
+              width: 70px;
             }
             .second-block {
               width: 60%;
               display: flex;
               flex-direction: column;
               gap: 20px;
+              padding: 50px;
+              
+              .cv-line {
+                background-color: $color-orange;
+                height: 2px;
+                width: 100%;
+              }
+              .cv-second-block-text-block {
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
 
-              img {
-                height: 40px;
-                margin-left: 10px;
-                margin-right: auto;
+                h1 {
+                  font-size: 24px;
+                  font-weight: 600;
+                }
+                p {
+                  font-size: 18px;
+                  font-weight: 300;
+                }
+              }
+              .cv-second-block-images-block {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                
+                img {
+                  margin-left: 10px;
+                  margin-right: auto;
+                  transition: all 0.3s ease;
+                  filter: brightness(0.6);
+                  
+                  &.active-image {
+                    border: 2px solid rgba(0, 0, 0, 0.15);
+                    border-radius: 100px;
+                    filter: brightness(1);
+                  }
+                  
+                  &:not(.active-image) {
+                    height: 165px;
+                  }
+                }
               }
             }
 
@@ -903,6 +963,236 @@ body {
           }
         }
       }
+    }
+  }
+}
+
+.contact-container {
+  width: 100%;
+  height: calc(100vh - 90px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  padding: 20px;
+  background-image: url("../img/backgrounds/contacts_background.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  h1 {
+    font-size: 40px;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 12px;
+    text-decoration-thickness: 4px; 
+    text-decoration-color: $color-orange;
+  }
+  h2 {
+    font-family: $font-jura;
+    font-size: 36px;
+    font-weight: 700;
+  }
+  p {
+    font-family: $font-jura;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .table-block {
+    display: flex;
+    flex-direction: column;
+    width: 1043px;
+    height: 516px;
+    border: 3px solid $color-orange;
+
+    .first-block {
+      display: flex;
+      height: 342px;
+      
+      .contact-socials-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 370px;
+        gap: 23px;
+        padding: 28px;
+        border-right: 3px solid $color-orange;
+        border-bottom: 3px solid $color-orange;
+
+        h2 {
+          text-align: center;
+        }
+        .contact-socials {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+      
+      .contact-email-feedback-block {
+        padding: 30px;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        gap: 25px;
+        border-bottom: 3px solid $color-orange;
+
+        .contact-feedback-form {
+          display: flex;
+          height: 100%;
+          gap: 10px;
+
+          .input-feedback-form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            
+            input {
+              width: 100%;
+              height: 30px;
+              border: 1px solid black;
+              padding: 5px 12px;
+              border-radius: 7px;
+              font-size: 16px;
+            }
+            button {
+              @include md-button;
+            }
+          }
+          .textarea-feedback-form {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            height: 100%;
+            gap: 25px;
+
+            textarea {
+              resize: none;
+              width: 100%;
+              height: 100%;
+              border: 1px solid black;
+              border-radius: 7px;
+              padding: 13px;
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+    .second-block {
+      display: flex;
+      height: 177px;
+      justify-content: space-around;
+      align-items: center;
+
+      .contact-number-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+
+        h2 {
+          font-size: 32px;
+          font-weight: 700;
+        }
+        .contact-number {
+          width: 350px;
+          height: 48px;
+          border-radius: 24px;
+          background-color: #FFE8D2;
+          display: flex;
+          align-items: center;
+
+          p {
+            justify-self: center;
+            flex: 1;
+            text-align: center;
+            font-weight: 700;
+          }
+          .contact-copy-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 100px;
+            background-color: #FFF3DE;
+            border: 1px solid black;
+            justify-self: end;
+            background-image: url("../img/btns/copy-icon.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+.booking-container {
+  width: 100%;
+  height: calc(100vh - 90px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  padding: 20px;
+  background-image: url("../img/backgrounds/contacts_background.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  flex: 1;
+
+  p {
+    font-family: $font-jura;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  h2 {
+    font-family: $font-jura;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .info-form-block {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+    max-width: 520px;
+
+    .info-form-item {
+      display: flex;
+      gap: 10px;
+      flex-direction: column;
+
+      img {
+        height: 10px;
+      }
+      input {
+        border: 3px solid $color-orange;
+        padding: 5px 10px;
+        font-size: 16px;
+        border-radius: 10px;
+        font-weight: 500;
+      }
+      textarea {
+        border: 3px solid $color-orange;
+        padding: 10px 15px;
+        font-size: 16px;
+        border-radius: 10px;
+        font-weight: 500;
+        resize: none;
+        height: 245px;
+
+      }
+    }
+  }
+  .data-form-block {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .md-button {
+      @include md-button();
+      margin-left: auto;
     }
   }
 }

@@ -1,13 +1,58 @@
 {% extends "index.html" %}
+{% load static %}
 {% load i18n %}
 
-{% block title %}{% trans "Главная страница" %}{% endblock %}
+{% block title %}AutoDrive — {% trans "Контакты" %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Добро пожаловать!" %}</h1>
+<div class="contact-container">
+    <h1>{% trans "Задавайте любые интересующие вас вопросы!" %}</h1>
+    
+    <div class="table-block">
+        <div class="first-block">
+            <div class="contact-socials-block">
+                <h2>{% trans "Пишите нам" %} <br>{% trans "в соц-сети:" %}</h2>
+                <div class="contact-socials">
+                    <div>
+                        <a href="#"><img src="{% static 'main/img/socials/is.svg' %}" alt="Instagram"></a>
+                        <a href="#"><img src="{% static 'main/img/socials/fb.svg' %}" alt="Facebook"></a>
+                        <a href="#"><img src="{% static 'main/img/socials/tt.svg' %}" alt="Twitter"></a> <br>
+                    </div>
+                        <a href="#"><img src="{% static 'main/img/socials/yt.svg' %}" alt="Telegram"></a>
+                </div>
+            </div>
+            <div class="contact-email-feedback-block">
+                <h2>{% trans "Обратная связь по почте:" %}</h2>
+                <div class="contact-feedback-form">
+                    <div class="input-feedback-form">
+                        <input type="text" placeholder="{% trans 'Email...' %}">
+                        <button type="submit">{% trans "Отправить" %}</button>
+                    </div>
+                    <div class="textarea-feedback-form">
+                        <textarea placeholder="{% blocktrans %}Опишите что вас интересует и администрация автошколы ответит вам в ближайшее время...{% endblocktrans %}" name="" id=""></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="second-block">
+            <div class="contact-number-block">
+                <h2>{% trans "Клиентский Отдел:" %}</h2>
+                <div class="contact-number">
+                    <p>+373 69 123 456</p>
+                    <div class="contact-copy-btn"></div>
+                </div>    
+            </div>
+            <div class="contact-number-block">
+                <h2>{% trans "Тех. поддержка:" %}</h2>
+                <div class="contact-number">
+                    <p>+373 79 987 654</p>
+                    <div class="contact-copy-btn"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-{% blocktrans with username=user.username|default:"гость" %}
-Привет, {{ username }}!
-{% endblocktrans %}
 
+    <p class="autors">© 2025 Mitsuhano & Arbuzzzio — Design & Development</p>
+</div>
 {% endblock %}

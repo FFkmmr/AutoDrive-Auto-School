@@ -178,20 +178,23 @@
             <img src="{% static 'main/img/socials/is.svg' %}" alt="">
             <img src="" alt="">
         </div>
-        <p>{% blocktrans %}© 2025 Mitsuhano & Arbuzzzio — Design & Development{% endblocktrans %}</p>
+        <p class="autors">© 2025 Mitsuhano & Arbuzzzio — Design & Development</p>
     </div>
     <div class="center-block">
         <img src="{% static 'main/img/footer-logo.svg' %}" alt="">
     </div>
     <div class="right-block">
-        <div class="first-block">
-            <h1>{% trans "Обратная связь:" %}</h1>
-            <input placeholder="{% trans 'Email...' %}" type="text">
-            <div class="lg-button">{% trans "Отправить" %}</div>
-        </div>
-        <div class="second-block">
-            <textarea placeholder="{% blocktrans %}Опишите что вас интересует и администрация автошколы ответит вам в ближайшее время...{% endblocktrans %}"></textarea>
-        </div>
+        <form class="feedback-form" action="{% url 'mailgun:send_feedback' %}" method="post">
+            {% csrf_token %}
+            <div class="first-block">
+                <h1>{% trans "Обратная связь:" %}</h1>
+                <input name="email" placeholder="{% trans 'Email...' %}" type="email" required>
+                <button type="submit" class="lg-button">{% trans "Отправить" %}</button>
+            </div>
+            <div class="second-block">
+                <textarea name="message" required placeholder="{% blocktrans %}Опишите что вас интересует и администрация автошколы ответит вам в ближайшее время...{% endblocktrans %}"></textarea>
+            </div>
+        </form>
     </div>
 </footer>
 {% endblock %}

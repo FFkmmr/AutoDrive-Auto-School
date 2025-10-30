@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -137,3 +138,11 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Mailgun configuration (set via environment variables in production)
+MAILGUN_API_BASE_URL = os.environ.get('MAILGUN_API_BASE_URL', 'https://api.mailgun.net/v3')
+MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY')
+MAILGUN_DOMAIN = os.environ.get('MAILGUN_DOMAIN')
+# Default sender and recipient; override via environment variables
+MAILGUN_FROM = os.environ.get('MAILGUN_FROM', f'AutoDrive <mailgun@{MAILGUN_DOMAIN}>' if MAILGUN_DOMAIN else None)
+MAILGUN_TO = os.environ.get('MAILGUN_TO')
