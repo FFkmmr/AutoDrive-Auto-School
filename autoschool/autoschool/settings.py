@@ -25,8 +25,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'unsafe-fallback-secret-for-dev')
 DEBUG = os.environ.get('DEBUG', '0') == '1'
 
-ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1']
-
+ALLOWED_HOSTS = [
+    ".herokuapp.com",
+    "autodrive-2a2abc1fa143.herokuapp.com",
+    "autoschool-autodrive.academy",
+    "www.autoschool-autodrive.academy",
+    "localhost",
+    "127.0.0.1",
+]
 
 # Application definition
 
