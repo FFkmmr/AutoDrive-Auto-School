@@ -1,11 +1,12 @@
 import os
 import sys
 
-# Добавляем в sys.path папку, где лежат приложения (чтобы импорты вроде "main" работали)
-# __file__ указывает на /app/autoschool/autoschool/wsgi.py, поэтому добавляем ../ (то есть /app/autoschool)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if BASE_DIR not in sys.path:
-    sys.path.insert(0, BASE_DIR)
+# Этот файл: /app/autoschool/autoschool/wsgi.py
+# Добавляем repo root (/app) в sys.path, чтобы импорты приложений и settings корректно работали.
+THIS_FILE_DIR = os.path.dirname(os.path.abspath(__file__))   # /app/autoschool/autoschool
+PROJECT_ROOT = os.path.dirname(os.path.dirname(THIS_FILE_DIR))  # /app
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
 
 from django.core.wsgi import get_wsgi_application
 
