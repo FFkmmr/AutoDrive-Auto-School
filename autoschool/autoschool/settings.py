@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'autoschool.urls'
+ROOT_URLCONF = 'autoschool.autoschool.urls'
 
 TEMPLATES = [
     {
@@ -77,9 +77,8 @@ WSGI_APPLICATION = 'autoschool.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': dj_database_url.config(default='sqlite:///db.sqlite3', conn_max_age=600, ssl_require=True)
-}
+DATABASE_URL = os.environ.get("DATABASE_URL", "sqlite:///db.sqlite3")
+DATABASES = { "default": dj_database_url.parse(DATABASE_URL) }
 
 
 # Password validation
