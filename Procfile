@@ -1,1 +1,1 @@
-web: gunicorn autoschool.wsgi
+web: gunicorn autoschool.autoschool.wsgi
