@@ -112,8 +112,8 @@
     <p>{% blocktrans %}Наша цель — обучить водителей навыкам, необходимым для уверенности, внимательности и защитного стиля вождения. Безопасность на дороге на протяжении всей жизни — наш главный приоритет.{% endblocktrans %}</p>
 
     <div class="lg-buttons">
-        <div class="lg-button">{% trans "Остались вопросы?" %}</div>
-        <div class="lg-button">{% trans "Записаться на курс" %}</div>
+        <a class="lg-button" href="{% url 'about' %}?active_page=about">{% trans "Остались вопросы?" %}</a>
+        <a class="lg-button" href="{% url 'booking' %}?active_page=booking">{% trans "Записаться на курс" %}</a>
     </div>
 
     <div class="students-say">

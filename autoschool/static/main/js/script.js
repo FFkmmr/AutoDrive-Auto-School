@@ -151,6 +151,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     // конец js комментариев
 
+    // --- Redirect carousel "go" buttons to Booking ---
+    (function initCarouselGoButtons(){
+        function computeBookingUrl(){
+            var path = window.location.pathname || '/';
+            var m = path.match(/^\/([A-Za-z]{2,3})(?:\/|$)/);
+            var lang = m ? '/' + m[1] : '';
+            return lang + '/booking?active_page=booking';
+        }
+        var url = computeBookingUrl();
+        document.querySelectorAll('.card-btn').forEach(function(btn){
+            btn.style.cursor = 'pointer';
+            btn.addEventListener('click', function(){
+                window.location.href = url;
+            });
+        });
+    })();
+
     // --- Flash messages overlay dismiss on click ---
     (function initFlashMessagesOverlay(){
         var overlay = document.querySelector('.messages');

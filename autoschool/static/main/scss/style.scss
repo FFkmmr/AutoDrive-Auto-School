@@ -412,7 +412,6 @@ body {
           font-size: 3rem;
           display: flex;
           justify-content: center;
-
           position: relative;
           overflow: visible;
 
@@ -483,6 +482,7 @@ body {
       flex-direction: column;
       align-items: center;
       text-align: center;
+      min-width: 420px;
 
       .card-icon {
         width: 165px;
