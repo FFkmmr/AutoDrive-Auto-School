@@ -28,9 +28,16 @@ def _send_mailgun(subject: str, text: str, reply_to: str | None = None) -> tuple
 		)
 
 	url = f"{base_url}/{domain}/messages"
-	data: dict[str, str] = {
+	# Support multiple recipients: comma- or semicolon-separated string -> list
+	recipients: list[str] = []
+	if isinstance(recipient, (list, tuple)):
+		recipients = [str(r).strip() for r in recipient if str(r).strip()]
+	elif isinstance(recipient, str):
+		recipients = [r.strip() for r in recipient.replace(";", ",").split(",") if r.strip()]
+
+	data: dict[str, str | list[str]] = {
 		"from": sender,
-		"to": recipient,
+		"to": recipients or recipient,
 		"subject": subject,
 		"text": text,
 	}
@@ -67,7 +74,7 @@ def send_feedback(request):
 
 	ok, detail = _send_via_mailgun(email=email, message=message)
 	if ok:
-		messages.success(request, "Ваше сообщение отправлено. Спасибо!")
+		messages.success(request, "Ваше сообщение отправлено!")
 	else:
 		messages.error(request, f"Не удалось отправить сообщение: {detail}")
 

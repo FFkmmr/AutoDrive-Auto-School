@@ -159,3 +159,5 @@ MAILGUN_DOMAIN = os.environ.get('MAILGUN_DOMAIN')
 # Default sender and recipient; override via environment variables
 MAILGUN_FROM = os.environ.get('MAILGUN_FROM', f'AutoDrive <mailgun@{MAILGUN_DOMAIN}>' if MAILGUN_DOMAIN else None)
 MAILGUN_TO = os.environ.get('MAILGUN_TO')
+# Tip: you can specify multiple recipients separated by commas or semicolons, e.g.:
+# MAILGUN_TO="admin@autoschool-autodrive.academy, pm-developer@autoschool-autodrive.academy"

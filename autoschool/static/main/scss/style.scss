@@ -1221,3 +1221,38 @@ body {
     }
   }
 }
+
+/* ===========================
+   FLASH MESSAGES OVERLAY
+   =========================== */
+.messages {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+
+  .message {
+    width: 600px;
+    height: 300px;
+    background: #ffffff; // green
+    color: #000000;
+    border: 8px solid #95ffb0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    font-weight: 600;
+    font-size: 30px;
+  }
+
+  .message + .message {
+    margin-left: 12px;
+  }
+}

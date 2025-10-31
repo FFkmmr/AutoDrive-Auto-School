@@ -151,6 +151,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     // конец js комментариев
 
+    // --- Flash messages overlay dismiss on click ---
+    (function initFlashMessagesOverlay(){
+        var overlay = document.querySelector('.messages');
+        if (!overlay) return;
+        // Close on any click
+        overlay.addEventListener('click', function(){
+            try { overlay.remove(); } catch(e) { overlay.style.display = 'none'; }
+        });
+        // Optional: auto-dismiss after 5s
+        setTimeout(function(){
+            if (!overlay || !overlay.parentNode) return;
+            try { overlay.remove(); } catch(e) { overlay.style.display = 'none'; }
+        }, 5000);
+    })();
+
     // --- Booking page helpers ---
     const lessonTypeSelect = document.getElementById('lesson_type');
     const lessonTypeWrapper = document.getElementById('lesson-type-item');

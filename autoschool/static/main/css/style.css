@@ -1,8 +1,6 @@
 /* ===========================
    BASE SCSS RESET
    =========================== */
-@import url("https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 * *,
 * *::before,
 * *::after {
@@ -259,7 +257,6 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   font-family: "Jura", sans-serif;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../img/backgrounds/home-backgr-1.png");
 }
 .image-block-1 .text-block {
   width: auto;
@@ -391,7 +388,6 @@ body {
   position: relative;
   height: 770px;
   width: 100%;
-  background-image: url("../img/backgrounds/main-about-block-background.svg");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -583,7 +579,6 @@ body {
 }
 
 .about-first-block {
-  background-image: url("../img/backgrounds/about-first-block-background.svg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 355px;
@@ -622,7 +617,6 @@ body {
 .about-third-block {
   height: 481px;
   width: 100%;
-  background-image: url("../img/backgrounds/about-second-block-background.svg");
   display: flex;
   justify-content: center;
   align-items: center;
@@ -680,7 +674,6 @@ body {
   font-weight: 700;
 }
 .about-fourth-block .second-about-fourth-block-block {
-  background-image: url("../img/backgrounds/about-people-block-background.svg");
   height: 960px;
   width: 100%;
 }
@@ -857,7 +850,6 @@ body {
   justify-content: center;
   gap: 60px;
   padding: 20px;
-  background-image: url("../img/backgrounds/contacts_background.svg");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -1008,7 +1000,6 @@ body {
   justify-content: center;
   gap: 60px;
   padding: 20px;
-  background-image: url("../img/backgrounds/contacts_background.svg");
   background-size: cover;
   background-repeat: no-repeat;
   flex: 1;
@@ -1109,6 +1100,39 @@ body {
   font-weight: 600;
   background-color: #FFD261;
   margin-left: auto;
+}
+
+/* ===========================
+   FLASH MESSAGES OVERLAY
+   =========================== */
+.messages {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+.messages .message {
+  width: 600px;
+  height: 300px;
+  background: #ffffff;
+  color: #000000;
+  border: 8px solid #95ffb0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  font-weight: 600;
+  font-size: 30px;
+}
+.messages .message + .message {
+  margin-left: 12px;
 }
 
 /*# sourceMappingURL=style.css.map */
