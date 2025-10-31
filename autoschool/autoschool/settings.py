@@ -77,7 +77,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'autoschool.wsgi.application'
+WSGI_APPLICATION = 'autoschool.autoschool.wsgi.application'
 
 
 # Database
@@ -132,11 +132,20 @@ USE_TZ = True
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = '/static/'
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+# Use Django's staticfiles during development, WhiteNoise in production
+if DEBUG:
+    # Let Django serve from STATICFILES_DIRS without collectstatic
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+    # Remove WhiteNoise middleware in development to avoid intercepting static requests
+    MIDDLEWARE = [mw for mw in MIDDLEWARE if mw != 'whitenoise.middleware.WhiteNoiseMiddleware']
+else:
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    # Ensure the STATIC_ROOT exists to prevent startup warnings
+    os.makedirs(STATIC_ROOT, exist_ok=True)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
