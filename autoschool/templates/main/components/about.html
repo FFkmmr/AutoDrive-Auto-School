@@ -5,7 +5,7 @@
 {% block title %}AutoDrive — {% trans "О нас" %}{% endblock %}
 
 {% block content %}
-<div class="about-first-block">
+<div class="about-first-block lazy-bg" data-bg="{% static 'main/img/backgrounds/about-first-block-background.svg' %}">
     <h1>{% trans "О НАС" %}</h1>
 </div>
 
@@ -18,7 +18,7 @@
     </div>
 </div>
 
-<div class="about-third-block">
+<div class="about-third-block lazy-bg" data-bg="{% static 'main/img/backgrounds/about-second-block-background.svg' %}">
     <div class="left-block">
         <h1>{% trans "Наша" %} <span style="color: #FF9924; font-weight: 600;">{% trans "Миссия" %}</span></h1>
         <p>{% trans "Мы стремимся повлиять на как можно большее количество людей, чтобы они стали лучшими водителями, какими только могут быть. Наши инструкторы постоянно ищут новые и более эффективные методы обучения. Каждый сотрудник компании старается делать процесс обучения лучше с каждым днём." %}</p>
@@ -33,7 +33,7 @@
     <div class="first-about-fourth-block-block">
         <h1>{% trans "Почему" %} <span style="color: #FF9924">{% trans "Выбирают Нас?" %}</span></h1>
     </div>
-    <div class="second-about-fourth-block-block">
+    <div class="second-about-fourth-block-block lazy-bg" data-bg="{% static 'main/img/backgrounds/about-people-block-background.svg' %}">
 
         <div class="comments-block swiper">
             <div class="card-wrapper">

@@ -5,7 +5,7 @@
 {% block title %}{% trans "Главная страница" %}{% endblock %}
 
 {% block content %}
-<div class="booking-container">
+<div class="booking-container lazy-bg" data-bg="{% static 'main/img/backgrounds/contacts_background.svg' %}">
     <form class="booking-form" method="post" action="{% url 'mailgun:send_booking' %}">
         {% csrf_token %}
         <div class="info-form-block">

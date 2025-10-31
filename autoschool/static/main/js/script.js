@@ -8,6 +8,35 @@ document.addEventListener('DOMContentLoaded', function() {
         img.setAttribute('decoding', 'async');
     });
 
+    // Ленивая подстановка background-image для секций с .lazy-bg
+    (function initLazyBackgrounds(){
+        var items = Array.prototype.slice.call(document.querySelectorAll('.lazy-bg'));
+        if (!items.length) return;
+
+        function applyBg(el){
+            var src = el.getAttribute('data-bg');
+            if (!src) return;
+            var grad = el.getAttribute('data-bg-gradient');
+            el.style.backgroundImage = grad ? (grad + ', url("' + src + '")') : 'url("' + src + '")';
+            el.classList.remove('lazy-bg');
+        }
+
+        if ('IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function(entries){
+                entries.forEach(function(entry){
+                    if (entry.isIntersecting) {
+                        applyBg(entry.target);
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '200px 0px' });
+            items.forEach(function(el){ io.observe(el); });
+        } else {
+            // Fallback: подставить после полной загрузки
+            window.addEventListener('load', function(){ items.forEach(applyBg); });
+        }
+    })();
+
     // Инициализация карусели мейна после полной загрузки ресурсов
     function initCarousel() {
         const carousel = document.querySelector('.carousel');
@@ -166,34 +195,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 });
 
-  // Language changer: compute new next URL with language prefix and submit
-  // Exposed globally so existing inline onchange can call it
-  window.changeLanguage = function (select) {
-    try {
-      var form = select.form;
-      var selected = select.value;
-      var nextInput = document.getElementById('language-next');
-      var path = window.location.pathname || '/';
+// Language changer: compute new next URL with language prefix and submit
+// Exposed globally so existing inline onchange can call it
+window.changeLanguage = function (select) {
+try {
+    var form = select.form;
+    var selected = select.value;
+    var nextInput = document.getElementById('language-next');
+    var path = window.location.pathname || '/';
 
-      // Pattern: path starts with '/xx' or '/xxx' where xx/xxx is language prefix
-      var langPrefixPattern = /^\/[A-Za-z]{2,3}(?:\/|$)/;
-      var newPath;
+    // Pattern: path starts with '/xx' or '/xxx' where xx/xxx is language prefix
+    var langPrefixPattern = /^\/[A-Za-z]{2,3}(?:\/|$)/;
+    var newPath;
 
-      if (path === '/') {
-        newPath = '/' + selected + '/';
-      } else if (langPrefixPattern.test(path)) {
-        newPath = path.replace(/^\/[A-Za-z]{2,3}/, '/' + selected);
-      } else {
-        newPath = '/' + selected + path;
-      }
-
-      // preserve query string and hash
-      newPath += window.location.search + window.location.hash;
-
-      if (nextInput) nextInput.value = newPath;
-      form.submit();
-    } catch (e) {
-      // fallback
-      if (select && select.form) select.form.submit();
+    if (path === '/') {
+    newPath = '/' + selected + '/';
+    } else if (langPrefixPattern.test(path)) {
+    newPath = path.replace(/^\/[A-Za-z]{2,3}/, '/' + selected);
+    } else {
+    newPath = '/' + selected + path;
     }
-  };
+
+    // preserve query string and hash
+    newPath += window.location.search + window.location.hash;
+
+    if (nextInput) nextInput.value = newPath;
+    form.submit();
+} catch (e) {
+    // fallback
+    if (select && select.form) select.form.submit();
+}
+};
+
+window.LogoRedirect = function() {
+    window.location.href = '/';
+}

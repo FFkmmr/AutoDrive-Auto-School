@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<div class="image-block-1">
+<div class="image-block-1 lazy-bg" data-bg="{% static 'main/img/backgrounds/home-backgr-1.png' %}" data-bg-gradient="linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4))">
     <div class="text-block">
         <h1>{% trans "Академия вождения" %}</h1>
         <p>{% blocktrans %}Станьте профессиональным водителем вместе с <span class="AutoDrive">AutoDrive</span>!{% endblocktrans %}</p>
@@ -82,7 +82,7 @@
     <h1>{% trans "ПОЧЕМУ МЫ?" %}</h1>
 </div>
 
-<div class="image-block-2">
+<div class="image-block-2 lazy-bg" data-bg="{% static 'main/img/backgrounds/main-about-block-background.svg' %}">
     <div class="cards-block">
       <div class="card">
         <img class="card-icon" src="{% static 'main/img/kalendar.svg' %}" alt="{% trans 'Календарь' %}">

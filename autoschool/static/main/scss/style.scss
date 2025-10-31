@@ -3,8 +3,6 @@
 /* ===========================
    BASE SCSS RESET
    =========================== */
-@import url("https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 * {
   *,
   *::before,
@@ -323,7 +321,6 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   font-family: $font-jura;
-  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../img/backgrounds/home-backgr-1.png');
 
   .text-block {
     width: auto;
@@ -470,7 +467,6 @@ body {
   position: relative;
   height: 770px;
   width: 100%;
-  background-image: url("../img/backgrounds/main-about-block-background.svg");
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -671,7 +667,6 @@ body {
 }
 
 .about-first-block {
-  background-image: url("../img/backgrounds/about-first-block-background.svg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 355px;
@@ -712,7 +707,6 @@ body {
 .about-third-block {
   height: 481px;
   width: 100%;
-  background-image: url("../img/backgrounds/about-second-block-background.svg");
   display: flex;
   justify-content: center;
   align-items: center;
@@ -772,7 +766,6 @@ body {
   }
 
   .second-about-fourth-block-block {
-    background-image: url("../img/backgrounds/about-people-block-background.svg");
     height: 960px;
     width: 100%;
 
@@ -976,7 +969,6 @@ body {
   justify-content: center;
   gap: 60px;
   padding: 20px;
-  background-image: url("../img/backgrounds/contacts_background.svg");
   background-size: cover;
   background-repeat: no-repeat;
 
@@ -1129,7 +1121,6 @@ body {
   justify-content: center;
   gap: 60px;
   padding: 20px;
-  background-image: url("../img/backgrounds/contacts_background.svg");
   background-size: cover;
   background-repeat: no-repeat;
   flex: 1;
