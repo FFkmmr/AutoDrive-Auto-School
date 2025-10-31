@@ -1,25 +1,46 @@
 // Инициализация после загрузки DOM
 document.addEventListener('DOMContentLoaded', function() {
-    // начало js карусели мейна
-    const carousel = document.querySelector('.carousel');
-    if (carousel) {
+    // Нативная ленивая загрузка картинок (для всех, где не задано иначе)
+    document.querySelectorAll('img:not([loading])').forEach(function(img){
+        img.setAttribute('loading', 'lazy');
+    });
+    document.querySelectorAll('img:not([decoding])').forEach(function(img){
+        img.setAttribute('decoding', 'async');
+    });
+
+    // Инициализация карусели мейна после полной загрузки ресурсов
+    function initCarousel() {
+        const carousel = document.querySelector('.carousel');
+        if (!carousel) return;
+
+        // Удаляем ранее созданные клоны
+        carousel.querySelectorAll('.group[aria-hidden="true"]').forEach(function(n){ n.remove(); });
+
         const group = carousel.querySelector('.group');
-        if (group) {
-            // получаем ширину блока и карусели
-            const groupWidth = group.offsetWidth;
-            const carouselWidth = carousel.offsetWidth;
+        if (!group) return;
 
-            // считаем, сколько блоков нужно добавить
-            const blocksNeeded = Math.ceil(carouselWidth / groupWidth) + 1;
+        // Используем размеры после загрузки изображений
+        const groupWidth = group.scrollWidth || group.offsetWidth;
+        const carouselWidth = carousel.clientWidth || carousel.offsetWidth;
+        if (!groupWidth || !carouselWidth) return;
 
-            for (let i = 0; i < blocksNeeded; i++) {
-                const clone = group.cloneNode(true);
-                clone.setAttribute('aria-hidden', 'true');
-                carousel.appendChild(clone);
-            }
+        const blocksNeeded = Math.ceil(carouselWidth / groupWidth) + 1;
+        for (let i = 0; i < blocksNeeded; i++) {
+            const clone = group.cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true');
+            carousel.appendChild(clone);
         }
     }
-    // конец js карусели мейна
+
+    // Debounce helper для resize
+    function debounce(fn, wait){
+        let t; return function(){
+            clearTimeout(t); t = setTimeout(fn, wait);
+        };
+    }
+
+    window.addEventListener('load', initCarousel);
+    window.addEventListener('resize', debounce(initCarousel, 200));
 
     // начало js комментариев - инициализация всех слайдеров на странице
     const swiperContainers = document.querySelectorAll('.card-wrapper');
@@ -100,6 +121,49 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     // конец js комментариев
+
+    // --- Booking page helpers ---
+    const lessonTypeSelect = document.getElementById('lesson_type');
+    const lessonTypeWrapper = document.getElementById('lesson-type-item');
+
+    function openSelect(selectEl) {
+        if (!selectEl) return;
+        // Try to open native dropdown programmatically
+        selectEl.focus();
+        try { selectEl.click(); } catch (e) {}
+    }
+
+    if (lessonTypeWrapper && lessonTypeSelect) {
+        // Clicking anywhere in the wrapper (except on the select itself) opens dropdown
+        lessonTypeWrapper.addEventListener('click', function(e) {
+            if (e.target && e.target.tagName.toLowerCase() === 'select') return;
+            openSelect(lessonTypeSelect);
+        });
+    }
+
+        // --- Contact page: copy phone numbers ---
+        document.querySelectorAll('.contact-copy-btn').forEach(function(btn){
+            btn.addEventListener('click', function(e){
+                e.preventDefault();
+                var container = btn.closest('.contact-number');
+                var p = container ? container.querySelector('p') : null;
+                var text = p ? (p.textContent || '').trim() : '';
+                if (!text) return;
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text);
+                } else {
+                    var ta = document.createElement('textarea');
+                    ta.value = text;
+                    ta.style.position = 'fixed';
+                    ta.style.top = '-1000px';
+                    document.body.appendChild(ta);
+                    ta.focus();
+                    ta.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(ta);
+                }
+            });
+        });
 });
 
   // Language changer: compute new next URL with language prefix and submit

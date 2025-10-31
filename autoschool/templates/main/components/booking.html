@@ -6,36 +6,63 @@
 
 {% block content %}
 <div class="booking-container">
-    <div class="info-form-block">
-        <div class="info-form-item">
-            <h2>{% trans "ФИО" %}</h2>
-            <input type="text" placeholder="{% trans 'Имя, Фамилия, Отчество' %}">
+    <form class="booking-form" method="post" action="{% url 'mailgun:send_booking' %}">
+        {% csrf_token %}
+        <div class="info-form-block">
+            <div class="info-form-item">
+                <h2>{% trans "ФИО" %}</h2>
+                <input type="text" name="full_name" id="full_name" placeholder="{% trans 'Имя, Фамилия, Отчество' %}" required>
+            </div>
+            <div class="info-form-item">
+                <h2>{% trans "Номер телефона" %}</h2>
+                <input type="text" name="phone" id="phone" placeholder="+373   XX XXX XXX" required>
+            </div>
+            <div class="info-form-item">
+                <h2>{% trans "Почта" %}</h2>
+                <input type="email" name="email" id="email" placeholder="example@mail.com" required>
+            </div>
+            <div class="info-form-item">
+                <h2>{% trans "Тип урока" %}</h2>
+                <div class="select-wrapper" id="lesson-type-item">
+                    <select name="lesson_type" id="lesson_type" required>
+                        <option value="" disabled selected>{% trans "Выберите тип урока" %}</option>
+                        <option value="Теоретический экзамен категория В1/A1 - обычный">{% trans "Теоретический экзамен категория В1/A1 - обычный" %}</option>
+                        <option value="Практический экзамен категория В1/А1 - обычный">{% trans "Практический экзамен категория В1/А1 - обычный" %}</option>
+                        <option value="Теоретический экзамен категория В1/А1- срочный">{% trans "Теоретический экзамен категория В1/А1- срочный" %}</option>
+                        <option value="Практический экзамен категория В1/А1 - срочный">{% trans "Практический экзамен категория В1/А1 - срочный" %}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="info-form-item">
+                <h2>{% trans "Сопроводительное письмо (необязательно)" %}</h2>
+                <textarea name="message" id="message" placeholder="{% blocktrans %}Опишите что вас интересует и администрация автошколы ответит вам в ближайшее время...{% endblocktrans %}"></textarea>
+            </div>
         </div>
-        <div class="info-form-item">
-            <h2>{% trans "Номер телефона" %}</h2>
-            <input type="text" placeholder="+373   XX XXX XXX">
+        <div class="data-form-block">
+            <h2>{% trans "Дата / Время" %}</h2>
+            <div class="calendar">
+                <input type="date" name="date" id="date" required>
+                <select name="time" id="time" required>
+                    <option value="" selected>{% trans "Выберите время" %}</option>
+                    <option value="07:00">07:00</option>
+                    <option value="08:00">08:00</option>
+                    <option value="09:00">09:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="18:00">18:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
+                </select>
+            </div>
+            <button type="submit" class="md-button">{% trans "Отправить" %}</button>
         </div>
-        <div class="info-form-item">
-            <h2>{% trans "Почта" %}</h2>
-            <input type="text" placeholder="example@mail.com">
-        </div>
-        <div class="info-form-item">
-            <h2>{% trans "Тип урока" %}</h2>
-            <input type="text" placeholder="{% trans 'Теоретический экзамен категория B1/A1 – обычный' %}">
-            <img src="{% static 'main/img/btns/dropdown_btn.svg' %}" alt="">
-        </div>
-        <div class="info-form-item">
-            <h2>{% trans "Сопроводительное письмо" %}</h2>
-            <textarea placeholder="{% blocktrans %}Опишите что вас интересует и администрация автошколы ответит вам в ближайшее время...{% endblocktrans %}" name="" id=""></textarea>
-        </div>
-    </div>
-    <div class="data-form-block">
-        <h2>{% trans "Дата / Время" %}</h2>
-        <div class="calendar">
-            <img src="{% static 'main/img/calendar_fake.svg' %}" alt="">
-        </div>
-        <div class="md-button">{% trans "Отправить" %}</div>
-    </div>
+    </form>
 
     <p class="autors">© 2025 Mitsuhano & Arbuzzzio — Design & Development</p>
 </div>

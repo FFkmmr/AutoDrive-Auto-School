@@ -24,13 +24,14 @@
             <div class="contact-email-feedback-block">
                 <h2>{% trans "Обратная связь по почте:" %}</h2>
                 <div class="contact-feedback-form">
-                    <div class="input-feedback-form">
-                        <input type="text" placeholder="{% trans 'Email...' %}">
-                        <button type="submit">{% trans "Отправить" %}</button>
-                    </div>
-                    <div class="textarea-feedback-form">
-                        <textarea placeholder="{% blocktrans %}Опишите что вас интересует и администрация автошколы ответит вам в ближайшее время...{% endblocktrans %}" name="" id=""></textarea>
-                    </div>
+                    <form class="input-feedback-form" action="{% url 'mailgun:send_feedback' %}" method="post">
+                        {% csrf_token %}
+                        <div style="display: flex; flex-direction: column; gap: 25px;">
+                            <input name="email" placeholder="{% trans 'Email...' %}" type="email" required>
+                            <button type="submit" class="lg-button">{% trans "Отправить" %}</button>
+                        </div>
+                        <textarea name="message" required placeholder="{% blocktrans %}Опишите что вас интересует и администрация автошколы ответит вам в ближайшее время...{% endblocktrans %}"></textarea>
+                    </form>
                 </div>
             </div>
         </div>
