@@ -169,6 +169,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Booking page helpers ---
     const lessonTypeSelect = document.getElementById('lesson_type');
     const lessonTypeWrapper = document.getElementById('lesson-type-item');
+    const dateInput = document.getElementById('date');
+    const timeSelect = document.getElementById('time');
 
     function openSelect(selectEl) {
         if (!selectEl) return;
@@ -184,6 +186,72 @@ document.addEventListener('DOMContentLoaded', function() {
             openSelect(lessonTypeSelect);
         });
     }
+
+    // Booking page: limit date to today+ and time to now+ for the selected date
+    (function initBookingDateTimeLimits(){
+        if (!dateInput || !timeSelect) return;
+
+        function pad(n){ return (n < 10 ? '0' : '') + n; }
+        function todayStr(){
+            const d = new Date();
+            return d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate());
+        }
+        function nowHHMM(){
+            const d = new Date();
+            return pad(d.getHours()) + ':' + pad(d.getMinutes());
+        }
+
+        // Set min date to today and default value if empty
+        const tStr = todayStr();
+        dateInput.setAttribute('min', tStr);
+        if (!dateInput.value) dateInput.value = tStr;
+
+        const allOptions = Array.prototype.slice.call(timeSelect.querySelectorAll('option'));
+
+        function restoreAllOptions(){
+            allOptions.forEach(function(opt){ opt.disabled = false; opt.hidden = false; });
+        }
+
+        function disablePastTimesForToday(){
+            const now = nowHHMM();
+            let anyEnabled = false;
+            allOptions.forEach(function(opt){
+                const v = (opt.value || '').trim();
+                if (!v) { opt.disabled = false; opt.hidden = false; return; } // placeholder
+                const isPast = v < now; // works because HH:MM is zero-padded
+                opt.disabled = isPast;
+                opt.hidden = isPast;
+                if (!isPast) anyEnabled = true;
+            });
+            // If no time left today (например, поздний вечер) — автоматически переключаем на завтра
+            if (!anyEnabled) {
+                const d = new Date(dateInput.value);
+                if (!isNaN(d.getTime())) {
+                    d.setDate(d.getDate() + 1);
+                    const nextStr = d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate());
+                    dateInput.value = nextStr;
+                    restoreAllOptions();
+                }
+            }
+        }
+
+        function updateTimeOptions(){
+            restoreAllOptions();
+            if (dateInput.value === tStr) {
+                disablePastTimesForToday();
+            }
+            // авто-выбор ближайшего доступного времени
+            const currentValue = timeSelect.value;
+            if (!currentValue || timeSelect.selectedOptions[0]?.disabled) {
+                const firstEnabled = allOptions.find(function(o){ return o.value && !o.disabled; });
+                if (firstEnabled) timeSelect.value = firstEnabled.value; else timeSelect.value = '';
+            }
+        }
+
+        dateInput.addEventListener('change', updateTimeOptions);
+        // Инициализация при загрузке
+        updateTimeOptions();
+    })();
 
         // --- Contact page: copy phone numbers ---
         document.querySelectorAll('.contact-copy-btn').forEach(function(btn){

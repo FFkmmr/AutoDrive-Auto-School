@@ -1,4 +1,6 @@
 from django import forms
+from django.utils import timezone
+from datetime import date as date_cls, time as time_cls
 
 
 class FeedbackForm(forms.Form):
@@ -69,3 +71,21 @@ class BookingForm(forms.Form):
         required=False,
         widget=forms.TimeInput(attrs={"type": "time"}),
     )
+
+    def clean(self):
+        cleaned = super().clean()
+        d = cleaned.get("date")
+        t = cleaned.get("time")
+
+        # Server-side guard: no past dates, and for today no past times
+        if d:
+            today = timezone.localdate()
+            if d < today:
+                self.add_error("date", "Нельзя выбрать прошедшую дату.")
+
+            if t:
+                now_local_time = timezone.localtime(timezone.now()).time()
+                if d == today and t < now_local_time:
+                    self.add_error("time", "Нельзя выбрать прошедшее время.")
+
+        return cleaned
