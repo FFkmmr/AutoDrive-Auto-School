@@ -88,7 +88,7 @@ msgstr "Noastră"
 
 #: .\templates\main\components\about.html:23
 msgid "Миссия"
-msgstr "Misiune"
+msgstr "Misiunea"
 
 #: .\templates\main\components\about.html:24
 msgid ""
@@ -391,7 +391,7 @@ msgid ""
 "внимательности и защитного стиля вождения. Безопасность на дороге на "
 "протяжении всей жизни — наш главный приоритет."
 msgstr ""
-"Scopul nostru este să instruim șoferii cu abilități necesare pentru "
+"Misiunea este să instruim șoferii cu abilități necesare pentru "
 "încredere, atenție și stil defensiv de conducere. Siguranța rutieră pe toată "
 "durata vieții este prioritatea noastră principală."
 
