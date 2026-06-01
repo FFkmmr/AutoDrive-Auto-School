@@ -39,31 +39,39 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Инициализация карусели мейна после полной загрузки ресурсов
     function initCarousel() {
-        const carousel = document.querySelector('.carousel');
+        var carousel = document.querySelector('.carousel');
         if (!carousel) return;
 
-        // Удаляем ранее созданные клоны
-        carousel.querySelectorAll('.group[aria-hidden="true"]').forEach(function(n){ n.remove(); });
+        var track = carousel.querySelector('.carousel-track');
+        if (!track) return;
 
-        const group = carousel.querySelector('.group');
+        // Удаляем ранее созданные клоны
+        track.querySelectorAll('.group[aria-hidden="true"]').forEach(function(n){ n.remove(); });
+        carousel.classList.remove('is-ready');
+
+        var group = track.querySelector('.group');
         if (!group) return;
 
-        // Используем размеры после загрузки изображений
-        const groupWidth = group.scrollWidth || group.offsetWidth;
-        const carouselWidth = carousel.clientWidth || carousel.offsetWidth;
+        var groupWidth = group.scrollWidth || group.offsetWidth;
+        var carouselWidth = carousel.clientWidth || carousel.offsetWidth;
         if (!groupWidth || !carouselWidth) return;
 
-        const blocksNeeded = Math.ceil(carouselWidth / groupWidth) + 1;
-        for (let i = 0; i < blocksNeeded; i++) {
-            const clone = group.cloneNode(true);
+        // Добавляем столько копий, чтобы покрыть экран + 1 запасная
+        var clonesNeeded = Math.ceil(carouselWidth / groupWidth) + 1;
+        for (var i = 0; i < clonesNeeded; i++) {
+            var clone = group.cloneNode(true);
             clone.setAttribute('aria-hidden', 'true');
-            carousel.appendChild(clone);
+            track.appendChild(clone);
         }
+
+        // Задаём ширину одной группы для анимации и запускаем
+        track.style.setProperty('--group-width', groupWidth + 'px');
+        carousel.classList.add('is-ready');
     }
 
     // Debounce helper для resize
     function debounce(fn, wait){
-        let t; return function(){
+        var t; return function(){
             clearTimeout(t); t = setTimeout(fn, wait);
         };
     }
