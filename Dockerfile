@@ -14,7 +14,7 @@ COPY . .
 RUN DJANGO_SETTINGS_MODULE=autoschool.autoschool.settings \
     SECRET_KEY=collectstatic-build-key \
     DEBUG=0 \
-    python autoschool/manage.py collectstatic --noinput
+    python -m django collectstatic --noinput
 
 EXPOSE 8000
 
