@@ -25,13 +25,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'unsafe-fallback-secret-for-dev')
 DEBUG = os.environ.get('DEBUG', '0') == '1'
 
-ALLOWED_HOSTS = [
-    ".railway.app",
-    "autoschool-autodrive.academy",
-    "www.autoschool-autodrive.academy",
-    "localhost",
-    "127.0.0.1",
-]
+_allowed_hosts_env = os.environ.get('ALLOWED_HOSTS', '')
+ALLOWED_HOSTS = (
+    [h.strip() for h in _allowed_hosts_env.split(',') if h.strip()]
+    if _allowed_hosts_env
+    else [
+        ".railway.app",
+        "autoschool-autodrive.academy",
+        "www.autoschool-autodrive.academy",
+        "localhost",
+        "127.0.0.1",
+    ]
+)
 
 # Application definition
 
