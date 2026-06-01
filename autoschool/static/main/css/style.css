@@ -320,18 +320,14 @@ body {
 }
 .why-we-block .infinite-line-block .carousel {
   display: flex;
-  scrollbar-width: none;
-  overflow-x: auto;
-}
-.why-we-block .infinite-line-block .carousel::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  background: transparent;
+  width: 100%;
+  overflow: hidden;
 }
 .why-we-block .infinite-line-block .carousel .group {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
   animation: spin 15s infinite linear;
   height: 390px;
 }
