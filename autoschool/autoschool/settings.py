@@ -26,8 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'unsafe-fallback-secret-for-dev')
 DEBUG = os.environ.get('DEBUG', '0') == '1'
 
 ALLOWED_HOSTS = [
-    ".herokuapp.com",
-    "autodrive-2a2abc1fa143.herokuapp.com",
+    ".railway.app",
     "autoschool-autodrive.academy",
     "www.autoschool-autodrive.academy",
     "localhost",
