@@ -49,8 +49,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'mailgun',
-    'sass_processor',
 ]
+if DEBUG:
+    INSTALLED_APPS.append('sass_processor')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
