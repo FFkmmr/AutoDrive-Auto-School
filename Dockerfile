@@ -2,7 +2,7 @@ FROM python:3.11-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-цф    PYTHONPATH=/app \
+    PYTHONPATH=/app \
     DJANGO_SETTINGS_MODULE=autoschool.autoschool.settings
 
 WORKDIR /app
