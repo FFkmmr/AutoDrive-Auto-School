@@ -143,20 +143,20 @@ if DEBUG:
     MIDDLEWARE = [mw for mw in MIDDLEWARE if mw != 'whitenoise.middleware.WhiteNoiseMiddleware']
 else:
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-    # Ensure the STATIC_ROOT exists to prevent startup warnings
     os.makedirs(STATIC_ROOT, exist_ok=True)
+    SASS_PROCESSOR_ENABLED = False  # use pre-compiled style.css in production
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Frontend-only mode: forms return success without sending emails
+FRONTEND_ONLY = os.environ.get('FRONTEND_ONLY', '0') == '1'
+
 # Mailgun configuration (set via environment variables in production)
 MAILGUN_API_BASE_URL = os.environ.get('MAILGUN_API_BASE_URL', 'https://api.mailgun.net/v3')
 MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY')
 MAILGUN_DOMAIN = os.environ.get('MAILGUN_DOMAIN')
-# Default sender and recipient; override via environment variables
 MAILGUN_FROM = os.environ.get('MAILGUN_FROM', f'AutoDrive <mailgun@{MAILGUN_DOMAIN}>' if MAILGUN_DOMAIN else None)
 MAILGUN_TO = os.environ.get('MAILGUN_TO')
-# Tip: you can specify multiple recipients separated by commas or semicolons, e.g.:
-# MAILGUN_TO="admin@autoschool-autodrive.academy, pm-developer@autoschool-autodrive.academy"

@@ -112,9 +112,10 @@ Copy `.env.example` to `.env` and fill in all required values:
 ```
 SECRET_KEY=          # Required — Django secret key
 DEBUG=1              # 1 for local dev, 0 for production
+FRONTEND_ONLY=1      # 1 = forms return success without sending emails (use locally)
 DATABASE_URL=        # Optional locally (defaults to SQLite); required in production
 
-MAILGUN_API_KEY=     # Mailgun private API key
+MAILGUN_API_KEY=     # Mailgun private API key (ignored when FRONTEND_ONLY=1)
 MAILGUN_DOMAIN=      # Mailgun sending domain
 MAILGUN_FROM=        # Sender display name + address
 MAILGUN_TO=          # Recipient(s) for contact/booking forms

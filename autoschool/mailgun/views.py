@@ -10,11 +10,9 @@ from .forms import FeedbackForm, BookingForm
 
 
 def _send_mailgun(subject: str, text: str, reply_to: str | None = None) -> tuple[bool, str]:
-	"""
-	Send a plain-text email via Mailgun HTTP API.
+	if getattr(settings, "FRONTEND_ONLY", False):
+		return True, "Frontend-only mode — email skipped."
 
-	Returns (ok, detail).
-	"""
 	api_key = getattr(settings, "MAILGUN_API_KEY", None)
 	domain = getattr(settings, "MAILGUN_DOMAIN", None)
 	sender = getattr(settings, "MAILGUN_FROM", None)
